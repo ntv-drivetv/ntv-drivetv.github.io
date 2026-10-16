@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 18 72 72">
+  <!-- Chép từ app/src/main/res/drawable/ic_launcher_foreground.xml; khung 72×72 giữa là phần launcher hiện ra. -->
+  <rect x="18" y="18" width="72" height="72" rx="16" fill="#101820"/>
+  <path fill="#FFFFFF" d="M30,32h48a6,6 0,0 1,6 6v28a6,6 0,0 1,-6 6h-48a6,6 0,0 1,-6 -6v-28a6,6 0,0 1,6 -6z"/>
+  <path fill="#1B2633" d="M31,36h46a3,3 0,0 1,3 3v26a3,3 0,0 1,-3 3h-46a3,3 0,0 1,-3 -3v-26a3,3 0,0 1,3 -3z"/>
+  <path fill="#FF3D3D" d="M48,42L48,62L64,52Z"/>
+  <path fill="#FFFFFF" d="M44,76h20v3h-20z"/>
+  <path fill="#FFFFFF" d="M76,60a11,11 0,1 1,0 22a11,11 0,1 1,0 -22z"/>
+  <path fill="none" stroke="#FF3D3D" stroke-width="2.5" d="M76,63.5a7.5,7.5 0,1 1,0 15a7.5,7.5 0,1 1,0 -15z"/>
+  <path fill="none" stroke="#1B2633" stroke-width="2" stroke-linecap="round" d="M76,71L80,67"/>
+</svg>

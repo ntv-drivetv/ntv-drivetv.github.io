@@ -9,6 +9,10 @@
 <meta property="og:title" content="NTV DriveTV">
 <meta property="og:description" content="YouTube trên màn hình xe, vẫn thấy tốc độ, camera và làn đường. Không cần root.">
 <meta property="og:image" content="img/og.jpg">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#101820">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
@@ -78,7 +82,7 @@
   header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--dash) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--dash-line); }
   header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
   .brand { display: flex; align-items: center; gap: 10px; font: 700 1.375rem/1 var(--display); color: var(--dash-ink); text-decoration: none; letter-spacing: 0.02em; }
-  .sign { --s: 32px; width: var(--s); height: var(--s); border-radius: 50%; flex: none; background: #fff; border: calc(var(--s) * 0.12) solid #E53935; display: grid; place-items: center; font: 800 calc(var(--s) * 0.42)/1 var(--display); color: #111; }
+  .logo { width: 32px; height: 32px; flex: none; border-radius: 8px; box-shadow: 0 0 0 1px var(--dash-line); }
   nav.links { display: flex; align-items: center; gap: 22px; font-size: var(--step--1); }
   nav.links a { color: var(--dash-ink-2); text-decoration: none; }
   nav.links a:hover { color: var(--dash-ink); }
@@ -202,19 +206,19 @@
     // Điều khoản của gói (mỗi dòng một ý). Ví dụ: "1 tài khoản Google Play", "Cập nhật miễn phí 6 tháng".
     terms: [],
     // Kênh liên hệ / gửi email đăng ký. Để trống "" nếu không dùng.
-    zalo: "",          // số điện thoại Zalo, ví dụ "0901234567"
-    facebook: "",      // link trang hoặc Messenger, ví dụ "https://m.me/tenban"
-    email: "",         // ví dụ "hotro@tenmien.vn"
-    phone: "",
+    zalo: "0935906134",          // số điện thoại Zalo, ví dụ "0901234567"
+    facebook: "https://www.facebook.com/nhohb07/",      // link trang hoặc Messenger, ví dụ "https://m.me/tenban"
+    email: "nhohb07@gmail.com",         // ví dụ "hotro@tenmien.vn"
+    phone: "0935906134",
     // Thông tin chuyển khoản (hiện ở bước 2). Ví dụ: "Vietcombank · 0123456789 · NGUYEN VAN A"
-    bank: ""
+    bank: "TPBank · 0935353729 · Huynh Ba Nho",
   };
 </script>
 
 <div class="dash">
   <header class="top gutter">
     <div class="wrap">
-      <a class="brand" href="#top"><span class="sign" aria-hidden="true">60</span>NTV DriveTV</a>
+      <a class="brand" href="#top"><img class="logo" src="img/logo.svg" width="32" height="32" alt="">NTV DriveTV</a>
       <nav class="links" aria-label="Mục">
         <a href="#tinh-nang">Tính năng</a>
         <a href="#bang-gia">Bảng giá</a>
