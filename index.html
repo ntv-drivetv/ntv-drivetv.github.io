@@ -257,11 +257,31 @@
   footer .wrap { display: grid; gap: 8px; }
   footer b { color: var(--ink); }
 
+  .menu-btn, nav.links > a.nav-buy { display: none; }
   @media (max-width: 1100px) {
-    header.top .wrap { row-gap: 6px; }
+    header.top .wrap { row-gap: 0; }
     .brand { order: 1; }
     .buy-top { order: 2; margin-left: auto; }
-    nav.links { order: 3; flex-basis: 100%; margin-left: -4px; margin-right: -4px; }
+    .menu-btn { order: 3; display: grid; place-items: center; width: 44px; height: 44px; flex: none; border: 2px solid var(--line); border-radius: 14px; background: var(--card); color: var(--ink); box-shadow: 3px 3px 0 var(--lift); cursor: pointer; padding: 0; }
+    .menu-btn svg { width: 22px; height: 22px; }
+    .menu-btn path { transition: transform 160ms, opacity 160ms; transform-origin: 12px 12px; }
+    header.top.open .menu-btn .l1 { transform: translateY(5px) rotate(45deg); }
+    header.top.open .menu-btn .l2 { opacity: 0; }
+    header.top.open .menu-btn .l3 { transform: translateY(-5px) rotate(-45deg); }
+    nav.links { order: 4; flex-basis: 100%; display: none; flex-direction: column; align-items: stretch; gap: 6px; overflow: visible; margin: 0; padding: 12px 0 6px; }
+    header.top.open nav.links { display: flex; }
+    nav.links > a { font-size: 1.05rem; padding: 12px 16px; border: 2px solid var(--soft-line); border-radius: 14px; background: var(--card); }
+    nav.links > a[aria-current="page"] { border-color: var(--line); }
+    nav.links .cc-link { display: flex; align-items: center; gap: 8px; }
+    nav.links .cc-link .tags { position: static; }
+    nav.links .cc-link small { font-size: 0.68rem; padding: 3px 7px; }
+    body.menu-open { overflow: hidden; }
+    header.top.open { max-height: 100vh; overflow-y: auto; }
+  }
+  @media (max-width: 480px) {
+    .buy-top { display: none; }
+    .menu-btn { margin-left: auto; }
+    nav.links > a.nav-buy { display: inline-flex; justify-content: center; margin-top: 6px; color: #FBF7EE; background: #201F1B; border-color: #201F1B; box-shadow: 4px 4px 0 var(--yellow); }
   }
   @media (max-width: 980px) {
     .hero-box .spark.s2 { display: none; }
@@ -272,7 +292,6 @@
     .cta .icon { display: none; }
   }
   @media (max-width: 640px) {
-    nav.links > a { font-size: 0.9rem; padding: 6px 10px; }
     .teaser { grid-template-columns: minmax(0, 1fr); }
     .teaser .go { display: none; }
     .cc-gallery, .compare .row { grid-template-columns: minmax(0, 1fr); }
@@ -329,15 +348,17 @@
 <header class="top gutter">
   <div class="wrap">
     <a class="brand" href="#trang-chu"><img src="img/logo.svg" width="36" height="36" alt="">NTV DriveTV</a>
-    <nav class="links" aria-label="Trang">
+    <nav class="links" id="nav" aria-label="Trang">
       <a href="#trang-chu" data-nav="trang-chu">Trang chủ</a>
       <a href="#tinh-nang" data-nav="tinh-nang">Tính năng</a>
       <a href="#man-hinh" data-nav="man-hinh">Màn hình xe</a>
       <a href="#bang-gia" data-nav="bang-gia">Bảng giá</a>
       <a href="#hoi-dap" data-nav="hoi-dap">Hỏi đáp</a>
       <a href="#carcast" data-nav="carcast" class="cc-link" title="App miễn phí cho điện thoại đã root">NTV CarCast<span class="tags" aria-label="cho máy root, miễn phí"><small class="root">ROOT</small><small>FREE</small></span></a>
+      <a class="btn dark nav-buy" href="#cach-mua">Mua ngay</a>
     </nav>
     <a class="btn dark buy-top" href="#cach-mua">Mua ngay</a>
+    <button type="button" class="menu-btn" aria-controls="nav" aria-expanded="false" aria-label="Mở menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg></button>
   </div>
 </header>
 
@@ -718,6 +739,20 @@
     }
     window.addEventListener("hashchange", route);
     route();
+
+    // Menu dạng hamburger trên điện thoại / máy tính bảng
+    var header = document.querySelector("header.top");
+    var menuBtn = document.querySelector(".menu-btn");
+    function setMenu(open) {
+      header.classList.toggle("open", open);
+      document.body.classList.toggle("menu-open", open);
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      menuBtn.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
+    }
+    menuBtn.addEventListener("click", function () { setMenu(!header.classList.contains("open")); });
+    window.addEventListener("hashchange", function () { setMenu(false); });
+    document.querySelectorAll("#nav a").forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
 
     // Chọn loại màn hình xe
     var tabs = document.querySelectorAll("[data-tab]");
