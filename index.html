@@ -4,193 +4,297 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NTV DriveTV</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Xem YouTube trên màn hình Android Auto, kèm bong bóng tốc độ, cảnh báo camera và làn đường từ Waze Mod. Không cần root. 200.000đ.">
+<meta name="description" content="Xem YouTube trên màn hình Android Auto, góc màn hình có bong bóng báo giới hạn, tốc độ, chỗ rẽ, làn đường và camera lấy từ Waze Mod. Không cần root, dùng thử miễn phí.">
 <meta property="og:title" content="NTV DriveTV">
-<meta property="og:description" content="YouTube trên màn hình xe, vẫn thấy tốc độ, camera và làn đường. Không cần root.">
+<meta property="og:description" content="YouTube trên màn hình xe mà tốc độ, camera, chỗ rẽ vẫn hiện ngay đó. Không cần root.">
 <meta property="og:image" content="img/og.jpg">
 <link rel="icon" href="img/logo.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<meta name="theme-color" content="#101820">
+<meta name="theme-color" content="#FBF7EE">
+<meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap">
 <style>
-  /* Bố cục: dải hero tối như màn hình táp-lô, bong bóng tốc độ vẽ nét đặt chồng lên ảnh màn xe; phần dưới nền sáng, cột hẹp, bảng giá một gói ở giữa trang. */
+  /* Phong cách: giấy kem có lưới ô, khung viền đen bo tròn có bóng khối lệch, nhãn nghiêng, nút viên thuốc đen bóng vàng,
+     từ khoá tô dạ quang. Minh hoạ dùng huy hiệu và ảnh chụp của chính app. */
   :root {
-    --paper: #F2F5F9;
-    --panel: #FFFFFF;
-    --ink: #111925;
-    --ink-2: #4B5667;
-    --line: #D8DEE7;
-    --signal: #2A74E8;
-    --signal-ink: #FFFFFF;
-    --signal-soft: #E3EDFD;
-    --sign: #E53935;
-    --dash: #0C1118;
-    --dash-ink: #EEF2F7;
-    --dash-ink-2: #9FAAB9;
-    --dash-line: #222B38;
-    --display: "Barlow Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
-    --body: "Be Vietnam Pro", "Segoe UI", Roboto, system-ui, sans-serif;
-    --step--1: 0.875rem;
-    --step-0: 1.0625rem;
-    --step-1: 1.375rem;
-    --step-2: clamp(1.875rem, 3.6vw, 2.5rem);
-    --step-3: clamp(2.625rem, 6.4vw, 4.75rem);
+    --paper: #FBF7EE;
+    --paper-2: #F4ECDC;
+    --card: #FFFFFF;
+    --ink: #201F1B;
+    --ink-2: #5A564C;
+    --line: #201F1B;
+    --soft-line: #E4DCCB;
+    --lift: #E6DCC8;
+    --yellow: #F2B630;
+    --yellow-soft: #FBF1C7;
+    --blue: #4F5BD5;
+    --red: #C9433F;
+    --orange: #D5652A;
+    --green: #3F7F3A;
+    --teal: #24807F;
+    --purple: #6B48C4;
+    --grid: rgba(32, 31, 27, 0.055);
+    --head: "Lexend", "Quicksand", system-ui, sans-serif;
+    --body: "Quicksand", "Nunito", system-ui, sans-serif;
+    --r: 26px;
     color-scheme: light;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #0D1117; --panel: #151B24; --ink: #EDF1F6; --ink-2: #A2ADBC; --line: #263040;
-      --signal: #5C9BFF; --signal-ink: #06101F; --signal-soft: #18263D; --sign: #F0524E;
-      --dash: #070A0F; --dash-line: #1B222D;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #0D1117; --panel: #151B24; --ink: #EDF1F6; --ink-2: #A2ADBC; --line: #263040;
-    --signal: #5C9BFF; --signal-ink: #06101F; --signal-soft: #18263D; --sign: #F0524E;
-    --dash: #070A0F; --dash-line: #1B222D;
-    color-scheme: dark;
-  }
-
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 var(--step-0)/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: auto; }
+  body {
+    margin: 0; color: var(--ink); font: 500 1.0625rem/1.6 var(--body); -webkit-font-smoothing: antialiased;
+    background-color: var(--paper);
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
   img { max-width: 100%; }
   [hidden] { display: none !important; }
-  .gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  .wrap { max-width: 1120px; margin: 0 auto; }
-  h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.05; text-wrap: balance; margin: 0; }
-  h2 { font-size: var(--step-2); }
-  h3 { font-size: var(--step-1); font-weight: 600; }
+  h1, h2, h3 { font-family: var(--head); font-weight: 800; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(1.75rem, 3.6vw, 2.5rem); }
+  h3 { font-size: 1.2rem; font-weight: 700; }
   p { margin: 0; }
-  a { color: var(--signal); }
-  :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 8px; }
-  .eyebrow { font: 600 var(--step--1)/1.2 var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 12px; font: 600 1rem/1 var(--body); text-decoration: none; border: 0; cursor: pointer; }
-  .btn.primary { background: var(--signal); color: var(--signal-ink); }
-  .btn.primary:hover { filter: brightness(1.07); }
-  .btn.ghost { background: transparent; color: var(--dash-ink); box-shadow: inset 0 0 0 1.5px var(--dash-line); }
-  .btn.ghost:hover { box-shadow: inset 0 0 0 1.5px var(--dash-ink-2); }
-  .price-tag { font-family: var(--display); font-variant-numeric: tabular-nums; }
+  a { color: var(--blue); }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 10px; }
+  .gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .wrap { max-width: 1240px; margin: 0 auto; }
 
-  /* Dải tối: đầu trang + hero */
-  .dash { background: var(--dash); color: var(--dash-ink); }
-  header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--dash) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--dash-line); }
+  /* Khối dùng chung */
+  .box { background: var(--card); border: 2px solid var(--line); border-radius: var(--r); box-shadow: 10px 10px 0 var(--lift); }
+  .tag { display: inline-block; font: 700 0.72rem/1 var(--head); letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 12px; border: 2px solid var(--line); border-radius: 10px; background: var(--card); box-shadow: 3px 3px 0 var(--lift); transform: rotate(-2deg); }
+  .mark { background: linear-gradient(transparent 12%, var(--yellow) 12%, var(--yellow) 88%, transparent 88%); padding: 0 6px; border-radius: 8px; color: #201F1B; font-weight: 700; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; font: 700 1.05rem/1 var(--body); text-decoration: none; border: 2px solid var(--line); cursor: pointer; transition: transform 120ms, box-shadow 120ms; }
+  .btn.dark { background: #201F1B; color: #FBF7EE; box-shadow: 5px 5px 0 var(--yellow); border-color: #201F1B; }
+  .btn.light { background: var(--card); color: var(--ink); box-shadow: 5px 5px 0 var(--lift); }
+  .btn:hover { transform: translate(-1px, -1px); }
+  .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--yellow); }
+  .btn svg { width: 18px; height: 18px; }
+  .spark { position: absolute; width: 26px; height: 26px; color: var(--green); }
+
+  /* Đầu trang */
+  [id] { scroll-margin-top: 90px; }
+  header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper-2) 94%, transparent); border-bottom: 2px solid var(--line); backdrop-filter: blur(6px); }
   header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
-  .brand { display: flex; align-items: center; gap: 10px; font: 700 1.375rem/1 var(--display); color: var(--dash-ink); text-decoration: none; letter-spacing: 0.02em; }
-  .logo { width: 32px; height: 32px; flex: none; border-radius: 8px; box-shadow: 0 0 0 1px var(--dash-line); }
-  nav.links { display: flex; align-items: center; gap: 22px; font-size: var(--step--1); }
-  nav.links a { color: var(--dash-ink-2); text-decoration: none; }
-  nav.links a:hover { color: var(--dash-ink); }
-  nav.links .btn { min-height: 40px; padding: 0 16px; font-size: 0.9rem; color: var(--signal-ink); }
+  .brand { display: flex; align-items: center; gap: 10px; font: 800 1.3rem/1 var(--head); color: var(--ink); text-decoration: none; }
+  .brand img { width: 36px; height: 36px; border-radius: 10px; border: 2px solid var(--line); }
+  header.top .wrap { flex-wrap: wrap; }
+  nav.links { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+  nav.links::-webkit-scrollbar { display: none; }
+  nav.links > a { flex: none; padding: 8px 12px; border-radius: 999px; border: 2px solid transparent; }
+  nav.links > a[aria-current="page"] { border-color: var(--line); background: var(--card); box-shadow: 3px 3px 0 var(--lift); text-decoration: none; }
+  nav.links { padding-top: 9px; margin-top: -9px; }
+  nav.links .cc-link { position: relative; }
+  nav.links .cc-link .tags { position: absolute; top: -8px; right: 2px; display: flex; gap: 2px; pointer-events: none; }
+  nav.links .cc-link small { font: 800 0.55rem/1 var(--head); letter-spacing: 0.04em; background: var(--yellow); color: #201F1B; border-radius: 999px; padding: 2px 5px; }
+  nav.links .cc-link small.root { background: #201F1B; color: #FBF7EE; }
+  .buy-top { min-height: 42px; padding: 0 18px; font-size: 0.95rem; flex: none; }
+  section.block.first { padding-top: 40px; }
+  .teaser { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 22px 26px; color: var(--ink); text-decoration: none; background: var(--yellow-soft); }
+  .teaser b { font: 700 1.25rem/1.3 var(--head); }
+  .teaser p { color: var(--ink-2); margin-top: 4px; }
+  .teaser .go { font: 800 1.8rem/1 var(--head); }
+  .teaser:hover { box-shadow: 10px 10px 0 var(--yellow); }
+  .cc-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: center; padding: clamp(22px, 4vw, 40px); background: var(--yellow-soft); }
+  .cc-hero h1 { font-size: clamp(2rem, 4vw, 3rem); }
+  .cc-hero .small { font-size: 0.9rem; color: var(--ink-2); }
+  .cc-shot { background: #0B0F14; border-radius: 16px; padding: 8px; border: 2px solid var(--line); }
+  .cc-shot img { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .phones figure { margin: 0; padding: 12px; display: grid; gap: 12px; align-content: start; }
+  .phones img { display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto; border-radius: 22px; border: 2px solid var(--line); }
+  .phones figcaption { color: var(--ink-2); font-size: 0.96rem; display: grid; gap: 4px; padding: 0 4px 4px; }
+  .phones figcaption b { color: var(--ink); font: 700 1.05rem/1.2 var(--head); }
+  .cc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .cc-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .cc-gallery figure { margin: 0; padding: 10px; display: grid; gap: 8px; }
+  .cc-gallery img { display: block; width: 100%; height: auto; border-radius: 12px; background: #0B0F14; }
+  .cc-gallery figcaption { font-weight: 700; padding: 0 4px 2px; }
+  .compare { padding: 6px 20px; }
+  .compare .row { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 12px; padding: 12px 0; border-bottom: 2px dashed var(--soft-line); }
+  .compare .row:last-child { border-bottom: 0; }
+  .compare .row > span:first-child { color: var(--ink-2); }
+  .compare .head-row-c b { font: 700 1.05rem/1.2 var(--head); }
+  nav.links > a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 0.98rem; }
+  nav.links > a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+  .pillbar { display: flex; align-items: center; gap: 6px; padding: 5px; border: 2px solid var(--line); border-radius: 999px; background: var(--card); box-shadow: 4px 4px 0 var(--lift); }
+  .pillbar a { padding: 9px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; color: var(--ink); font-size: 0.95rem; }
+  .pillbar a.dark { background: #201F1B; color: #FBF7EE; box-shadow: 3px 3px 0 var(--yellow); }
 
-  .hero .wrap { display: grid; gap: 36px; padding-block: 48px 64px; }
-  .hero-copy { display: grid; gap: 18px; max-width: 760px; }
-  .hero h1 { font-size: var(--step-3); font-weight: 800; color: var(--dash-ink); }
-  .hero h1 em { font-style: normal; color: #6FA8FF; }
-  .hero .lede { font-size: 1.1875rem; color: var(--dash-ink-2); max-width: 58ch; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
-  .chips li { font-size: var(--step--1); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--dash-line); color: var(--dash-ink); }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .actions .note { font-size: var(--step--1); color: var(--dash-ink-2); }
+  /* Hero */
+  .hero { padding-block: 40px 0; }
+  .hero-box { position: relative; background: var(--yellow-soft); background-image: linear-gradient(rgba(32, 31, 27, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(32, 31, 27, 0.06) 1px, transparent 1px); background-size: 22px 22px; padding: clamp(24px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: center; }
+  .hero-copy { display: grid; gap: 22px; justify-items: start; }
+  .hero h1 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); }
+  .hero .lede { font-size: 1.15rem; color: var(--ink-2); max-width: 60ch; line-height: 1.75; }
+  .actions { display: flex; flex-wrap: wrap; gap: 16px; }
+  .hero-box .spark.s1 { top: 9%; right: 8%; }
+  .hero-box .spark.s2 { bottom: 10%; right: 6%; width: 18px; height: 18px; }
 
-  .stage { position: relative; padding-bottom: 48px; }
-  .stage .screen { background: #000; border-radius: 22px; padding: 10px; box-shadow: 0 0 0 1px var(--dash-line), 0 40px 80px -40px rgba(0, 0, 0, 0.9); }
-  .stage .screen img { display: block; width: 100%; height: auto; border-radius: 14px; opacity: 0.92; }
-  .stage .bubble { position: absolute; left: 4%; right: 4%; bottom: 0; filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.55)); }
-  .stage .bubble img { display: block; width: 100%; height: auto; }
+  /* Khung xem màn xe ngay dưới hero */
+  .showcase { margin-top: 28px; overflow: hidden; }
+  .showcase .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 2px solid var(--line); }
+  .showcase .title { display: flex; align-items: center; gap: 12px; }
+  .showcase .title .ic { width: 44px; height: 44px; border: 2px solid var(--line); border-radius: 12px; background: #101820; display: grid; place-items: center; box-shadow: 3px 3px 0 var(--lift); }
+  .showcase .title .ic svg { width: 40px; height: 40px; }
+  .showcase .title b { display: block; font: 700 1.05rem/1.2 var(--head); }
+  .showcase .title small { color: var(--ink-2); }
+  .seg { display: inline-flex; gap: 4px; padding: 4px; border: 2px solid var(--line); border-radius: 999px; background: var(--paper); }
+  .seg button { border: 0; background: none; padding: 8px 16px; border-radius: 999px; font: 700 0.92rem/1 var(--body); color: var(--ink); cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: #201F1B; color: #FBF7EE; }
+  .showcase .shot { background: #0B0F14; padding: clamp(8px, 1.6vw, 18px); }
+  .showcase .shot img { display: block; width: 100%; height: auto; border-radius: 14px; }
+  .showcase .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 14px 18px; font-size: 0.95rem; color: var(--ink-2); border-top: 2px solid var(--line); }
+  .showcase .legend i { font-style: normal; font-weight: 700; color: var(--ink); }
 
-  /* Phần sáng */
-  section.block { padding-block: 80px 0; }
-  section.block > .wrap { display: grid; gap: 32px; }
-  .head { display: grid; gap: 12px; max-width: 62ch; }
-  .head p { color: var(--ink-2); }
+  /* Phần nội dung */
+  section.block { padding-block: 88px 0; }
+  .head-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 40px; align-items: center; margin-bottom: 28px; }
+  .head-row p { color: var(--ink-2); font-size: 1.05rem; }
+  .head { display: grid; gap: 14px; justify-items: start; margin-bottom: 28px; max-width: 70ch; }
+  .head p { color: var(--ink-2); font-size: 1.05rem; }
 
-  .features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  .feature { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-  .feature .mark { width: 40px; height: 40px; border-radius: 12px; background: var(--signal-soft); color: var(--signal); display: grid; place-items: center; }
-  .feature .mark svg { width: 22px; height: 22px; }
-  .feature p { color: var(--ink-2); font-size: 0.975rem; }
+  /* Thẻ tính năng nhiều màu */
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .fcard { position: relative; overflow: hidden; color: #FFF; border: 2px solid var(--line); border-radius: 22px; padding: 20px 20px 0; display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; min-height: 330px; box-shadow: 8px 8px 0 var(--lift);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1.2px, transparent 1.3px); background-size: 14px 14px; }
+  .fcard .pill { justify-self: start; font: 700 0.7rem/1 var(--head); letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 11px; border-radius: 999px; background: rgba(0, 0, 0, 0.28); border: 1.5px solid rgba(255, 255, 255, 0.55); }
+  .fcard h3 { font-size: 1.3rem; }
+  .fcard p { font-size: 0.98rem; line-height: 1.55; color: rgba(255, 255, 255, 0.92); }
+  .fcard .art { position: relative; height: 128px; margin: 6px -20px 0; border-top: 2px dashed rgba(255, 255, 255, 0.35); display: grid; place-items: center; background: rgba(255, 255, 255, 0.1); border-radius: 50% 50% 0 0 / 40% 40% 0 0; }
+  .fcard .art svg { width: 88px; height: 88px; filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.2)); }
+  .fcard .art .chip { position: absolute; font: 800 0.75rem/1 var(--head); padding: 6px 9px; border-radius: 9px; background: #FFF; color: #201F1B; border: 2px solid #201F1B; box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25); }
+  .fcard .art .chip.l { left: 16px; top: 22px; transform: rotate(-8deg); }
+  .fcard .art .chip.r { right: 16px; top: 18px; transform: rotate(7deg); }
+  .c-blue { background-color: var(--blue); } .c-red { background-color: var(--red); } .c-orange { background-color: var(--orange); }
+  .c-green { background-color: var(--green); } .c-purple { background-color: var(--purple); } .c-teal { background-color: var(--teal); }
+  .sign { width: 88px; height: 88px; border-radius: 50%; background: #FFF; border: 10px solid #E53935; display: grid; place-items: center; font: 800 2rem/1 var(--head); color: #111; box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2); }
 
-  .show { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; align-items: center; }
-  .show.flip { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-  .show.flip .media { order: 2; }
-  .show .copy { display: grid; gap: 12px; min-width: 0; }
-  .show .copy p { color: var(--ink-2); }
-  .frame { background: #000; border-radius: 18px; padding: 8px; }
-  .frame img { display: block; width: 100%; height: auto; border-radius: 11px; }
-  .pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
-  .bare img { display: block; width: 100%; height: auto; }
-  ul.ticks { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 8px; }
-  ul.ticks li { padding-left: 26px; position: relative; }
-  ul.ticks li::before { content: ""; position: absolute; left: 2px; top: 0.5em; width: 12px; height: 12px; border-radius: 50%; border: 3px solid var(--signal); }
+  /* Hai cột: hình + các ý đánh số */
+  .split { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 22px; align-items: stretch; }
+  .split.flip { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+  .split.flip .visual { order: 2; }
+  .split.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+  .visual { padding: 22px; display: grid; gap: 16px; align-content: center; }
+  .visual img { display: block; width: 100%; height: auto; }
+  .visual .dark { background: #0B0F14; border-radius: 16px; padding: 10px; }
+  .visual .dark img { border-radius: 10px; }
+  .visual .note { font-size: 0.85rem; color: var(--ink-2); }
+  .visual.solo { max-width: 860px; margin: 0 auto; }
+  .visual.solo.wide { max-width: 1000px; }
+  ol.howto { margin: 6px 0 0; padding-left: 1.3em; display: grid; gap: 10px; color: var(--ink-2); }
+  ol.howto b { color: var(--ink); }
+  .head .note { font-size: 0.92rem; }
+  .terms-box { justify-self: stretch; background: var(--card); border: 2px dashed var(--line); border-radius: 18px; padding: 16px 18px; display: grid; gap: 10px; }
+  .terms-box > b { font: 700 1rem/1.2 var(--head); }
+  .terms-box ul.ticks li { font-weight: 700; }
 
-  /* Bảng giá: một gói */
-  .pricing { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-  .plan { background: var(--panel); border: 2px solid var(--signal); border-radius: 22px; padding: 28px; display: grid; gap: 18px; }
-  .plan .amount { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-  .plan .amount b { font: 800 4rem/0.9 var(--display); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
-  .plan .amount span { color: var(--ink-2); }
-  .plan ul.ticks li { color: var(--ink); }
-  .plan .terms { font-size: var(--step--1); color: var(--ink-2); display: grid; gap: 4px; }
+  /* Các loại màn hình */
+  .tabs { display: flex; gap: 10px; overflow-x: auto; padding: 4px 10px 12px 2px; scrollbar-width: thin; }
+  .tabs button { flex: none; display: grid; gap: 3px; text-align: left; padding: 10px 16px; border-radius: 16px; border: 2px solid var(--line); background: var(--card); color: var(--ink); font: 700 0.98rem/1.2 var(--body); cursor: pointer; box-shadow: 4px 4px 0 var(--lift); }
+  .tabs button small { font-weight: 600; font-size: 0.8rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .tabs button[aria-selected="true"] { background: #201F1B; color: #FBF7EE; box-shadow: 4px 4px 0 var(--yellow); }
+  .tabs button[aria-selected="true"] small { color: #CFC7B5; }
+  .panel { padding: 20px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+  .panel.wide { grid-template-columns: minmax(0, 1fr); }
+  .panel.tall { grid-template-columns: repeat(2, minmax(0, 300px)); justify-content: center; }
+  .panel figure { margin: 0; display: grid; gap: 10px; }
+  .panel img { display: block; width: 100%; height: auto; background: #0B0F14; border-radius: 14px; padding: 6px; }
+  .panel figcaption { font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .panel figcaption::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--yellow); border: 2px solid var(--line); }
+  .panel .note { grid-column: 1 / -1; color: var(--ink-2); padding-top: 4px; border-top: 2px dashed var(--soft-line); }
+  .fineprint { font-size: 0.88rem; color: var(--ink-2); margin-top: 16px; }
 
-  ol.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; counter-reset: s; }
-  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: start; }
-  ol.steps li::before { content: counter(s); width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--signal-soft); color: var(--signal); font: 800 1.375rem/1 var(--display); }
-  ol.steps b { display: block; font-weight: 600; }
-  ol.steps span { color: var(--ink-2); font-size: 0.95rem; }
-
+  /* Giá + cách mua */
+  .pricing { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 22px; align-items: start; }
+  .plan { padding: 28px; display: grid; gap: 18px; justify-items: start; background: var(--yellow-soft); }
+  .plan > ul { justify-self: stretch; }
+  .plan .amount { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .plan .amount b { font: 800 clamp(3rem, 6vw, 4.2rem)/0.95 var(--head); }
+  .plan .amount span { color: var(--ink-2); font-weight: 700; }
+  ul.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  ul.ticks li { padding-left: 32px; position: relative; }
+  ul.ticks li::before { content: ""; position: absolute; left: 0; top: 0.2em; width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--line); background: var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23201F1B' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 14px no-repeat; }
+  .buy { padding: 28px; display: grid; gap: 18px; }
+  ol.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; counter-reset: s; }
+  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 14px; align-items: start; }
+  ol.steps li::before { content: "0" counter(s); width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; font: 800 0.95rem/1 var(--head); background: var(--card); box-shadow: 3px 3px 0 var(--lift); }
+  ol.steps b { display: block; font: 700 1.05rem/1.3 var(--head); margin-top: 2px; }
+  ol.steps span { color: var(--ink-2); font-size: 0.97rem; }
   .contact { display: flex; flex-wrap: wrap; gap: 10px; }
-  .contact a, .contact span { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 0.95rem; }
-  .contact a:hover { border-color: var(--signal); }
-  .contact small { color: var(--ink-2); }
-  .todo { border: 2px dashed var(--sign); color: var(--sign); border-radius: 12px; padding: 12px 14px; font-size: 0.95rem; }
+  .contact a, .contact span { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: var(--card); border: 2px solid var(--line); color: var(--ink); text-decoration: none; font-size: 0.95rem; box-shadow: 3px 3px 0 var(--lift); }
+  .contact a:hover { box-shadow: 3px 3px 0 var(--yellow); }
+  .contact small { color: var(--ink-2); font-weight: 600; }
+  .todo { border: 2px dashed var(--red); color: var(--red); border-radius: 14px; padding: 12px 14px; font-size: 0.95rem; }
 
-  table.req { width: 100%; border-collapse: collapse; font-size: 0.975rem; }
-  table.req th, table.req td { text-align: left; padding: 14px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  table.req tr:last-child th, table.req tr:last-child td { border-bottom: 0; }
-  table.req th { width: 30%; font-weight: 600; }
-  table.req td { color: var(--ink-2); }
-  .tablebox { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 4px 10px; }
+  /* Cần có */
+  .reqs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .req { padding: 18px 20px; display: grid; gap: 6px; align-content: start; box-shadow: 6px 6px 0 var(--lift); }
+  .req b { font: 700 1.02rem/1.3 var(--head); }
+  .req p { color: var(--ink-2); font-size: 0.96rem; }
 
-  .faq { display: grid; gap: 10px; max-width: 820px; }
-  .faq details { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 4px 18px; }
-  .faq summary { cursor: pointer; padding: 14px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  /* Hỏi đáp hai cột */
+  .faq { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 48px; }
+  .faq details { border-bottom: 2px solid var(--soft-line); }
+  .faq summary { cursor: pointer; padding: 18px 0; font: 700 1.05rem/1.4 var(--head); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; font: 700 1.5rem/1 var(--display); color: var(--signal); }
-  .faq details[open] summary::after { content: "−"; }
-  .faq details p { padding: 0 0 16px; color: var(--ink-2); }
+  .faq summary::after { content: ""; flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--line); background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23201F1B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E") center / 16px no-repeat var(--card); transition: transform 160ms; }
+  .faq details[open] summary::after { transform: rotate(180deg); }
+  .faq details p { padding: 0 0 18px; color: var(--ink-2); }
 
-  .cta-band { margin-top: 88px; }
-  .cta-band .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding-block: 40px; }
-  .cta-band h2 { color: var(--dash-ink); }
-  .cta-band p { color: var(--dash-ink-2); }
+  /* Kêu gọi cuối trang */
+  .cta { position: relative; margin-top: 96px; text-align: center; padding: clamp(36px, 6vw, 64px) 20px; display: grid; gap: 18px; justify-items: center; background: var(--yellow-soft); background-image: linear-gradient(rgba(32, 31, 27, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(32, 31, 27, 0.06) 1px, transparent 1px); background-size: 22px 22px; }
+  .cta h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); }
+  .cta p { color: var(--ink-2); font-size: 1.1rem; }
+  .cta .checks { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; font-weight: 700; font-size: 0.95rem; }
+  .cta .checks span::before { content: "✓ "; color: var(--green); }
+  .cta .spark.s1 { top: 18%; left: 9%; } .cta .spark.s2 { top: 26%; right: 10%; width: 18px; height: 18px; }
+  .cta .icon { position: absolute; left: 6%; bottom: 0; width: 120px; }
+  .cta .icon svg { width: 120px; height: 120px; display: block; }
 
-  footer { padding-block: 32px 40px; font-size: var(--step--1); color: var(--ink-2); }
+  footer { margin-top: 72px; border-top: 2px solid var(--line); background: var(--paper-2); padding-block: 28px 40px; font-size: 0.9rem; color: var(--ink-2); }
   footer .wrap { display: grid; gap: 8px; }
-  footer p { max-width: 90ch; }
+  footer b { color: var(--ink); }
 
-  @media (max-width: 900px) {
-    .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .show, .show.flip, .pricing { grid-template-columns: minmax(0, 1fr); }
-    .show.flip .media { order: 0; }
+  @media (max-width: 1100px) {
+    header.top .wrap { row-gap: 6px; }
+    .brand { order: 1; }
+    .buy-top { order: 2; margin-left: auto; }
+    nav.links { order: 3; flex-basis: 100%; margin-left: -4px; margin-right: -4px; }
   }
-  @media (max-width: 560px) {
-    nav.links a:not(.btn) { display: none; }
-    .features, .pair { grid-template-columns: minmax(0, 1fr); }
-    .hero .wrap { padding-block: 28px 40px; }
-    section.block { padding-block: 60px 0; }
-    .stage { padding-bottom: 24px; }
-    .plan .amount b { font-size: 3.25rem; }
+  @media (max-width: 980px) {
+    .hero-box .spark.s2 { display: none; }
+    .hero-box, .split, .split.flip, .split.even, .pricing, .head-row, .cc-hero { grid-template-columns: minmax(0, 1fr); }
+    .split.flip .visual { order: 0; }
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .faq { grid-template-columns: minmax(0, 1fr); }
+    .cta .icon { display: none; }
   }
-  @media (prefers-reduced-motion: no-preference) {
-    .stage .bubble { animation: slide 700ms 150ms cubic-bezier(.2,.7,.2,1) both; }
-    @keyframes slide { from { transform: translateY(18px); } to { transform: none; } }
+  @media (max-width: 640px) {
+    nav.links > a { font-size: 0.9rem; padding: 6px 10px; }
+    .teaser { grid-template-columns: minmax(0, 1fr); }
+    .teaser .go { display: none; }
+    .cc-gallery, .compare .row { grid-template-columns: minmax(0, 1fr); }
+    .phones { grid-template-columns: minmax(0, 1fr); }
+    .compare .row { gap: 2px; }
+    .compare .head-row-c { display: none; }
+    .compare .row > span:nth-child(2)::before { content: "DriveTV: "; font-weight: 700; }
+    .compare .row > span:nth-child(3)::before { content: "CarCast: "; font-weight: 700; }
+    .cards, .panel { grid-template-columns: minmax(0, 1fr); }
+    .panel.tall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .box { box-shadow: 6px 6px 0 var(--lift); }
+    .hero { padding-top: 22px; }
+    section.block { padding-top: 64px; }
+    .btn { min-height: 48px; padding: 0 20px; }
+    .buy-top { min-height: 38px; padding: 0 14px; font-size: 0.88rem; }
+    .brand { font-size: 1.12rem; }
+    .brand img { width: 32px; height: 32px; }
+    .hero h1 { font-size: clamp(1.9rem, 8.6vw, 2.4rem); }
+    .cc-hero h1 { font-size: clamp(1.7rem, 7.6vw, 2.2rem); }
+    .hero-box .spark { display: none; }
   }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
@@ -203,180 +307,252 @@
 <script>
   window.DRIVETV = {
     price: "200.000đ",
+    // Số ngày dùng thử (khớp cấu hình trên trang quản trị).
+    trialDays: 3,
     // Điều khoản của gói (mỗi dòng một ý). Ví dụ: "1 tài khoản Google Play", "Cập nhật miễn phí 6 tháng".
-    terms: [],
+    terms: [
+      "Thanh toán 1 lần, xài vĩnh viễn", 
+      "Cập nhật miễn phí 6 tháng",
+      "Cài từ Google Play, không root máy",
+      "Hỗ trợ cài đặt từ xa qua",
+    ],
     // Kênh liên hệ / gửi email đăng ký. Để trống "" nếu không dùng.
-    zalo: "0935906134",          // số điện thoại Zalo, ví dụ "0901234567"
+    zalo: "0935179050",          // số điện thoại Zalo, ví dụ "0901234567"
     facebook: "https://www.facebook.com/nhohb07/",      // link trang hoặc Messenger, ví dụ "https://m.me/tenban"
-    email: "nhohb07@gmail.com",         // ví dụ "hotro@tenmien.vn"
-    phone: "0935906134",
-    // Thông tin chuyển khoản (hiện ở bước 2). Ví dụ: "Vietcombank · 0123456789 · NGUYEN VAN A"
-    bank: "TPBank · 0935353729 · Huynh Ba Nho",
+    email: "laptrinhdeom@gmail.com",
+    phone: "0935179050",
+    // Thông tin chuyển khoản (hiện ở bước 3). Ví dụ: "Vietcombank · 0123456789 · NGUYEN VAN A"
+    bank: "TPBank · 02038212103 · NGUYEN THI THU THUY",
   };
 </script>
 
-<div class="dash">
-  <header class="top gutter">
-    <div class="wrap">
-      <a class="brand" href="#top"><img class="logo" src="img/logo.svg" width="32" height="32" alt="">NTV DriveTV</a>
-      <nav class="links" aria-label="Mục">
-        <a href="#tinh-nang">Tính năng</a>
-        <a href="#bang-gia">Bảng giá</a>
-        <a href="#hoi-dap">Hỏi đáp</a>
-        <a class="btn primary" href="#bang-gia">Mua ngay</a>
-      </nav>
-    </div>
-  </header>
+<header class="top gutter">
+  <div class="wrap">
+    <a class="brand" href="#trang-chu"><img src="img/logo.svg" width="36" height="36" alt="">NTV DriveTV</a>
+    <nav class="links" aria-label="Trang">
+      <a href="#trang-chu" data-nav="trang-chu">Trang chủ</a>
+      <a href="#tinh-nang" data-nav="tinh-nang">Tính năng</a>
+      <a href="#man-hinh" data-nav="man-hinh">Màn hình xe</a>
+      <a href="#bang-gia" data-nav="bang-gia">Bảng giá</a>
+      <a href="#hoi-dap" data-nav="hoi-dap">Hỏi đáp</a>
+      <a href="#carcast" data-nav="carcast" class="cc-link" title="App miễn phí cho điện thoại đã root">NTV CarCast<span class="tags" aria-label="cho máy root, miễn phí"><small class="root">ROOT</small><small>FREE</small></span></a>
+    </nav>
+    <a class="btn dark buy-top" href="#cach-mua">Mua ngay</a>
+  </div>
+</header>
 
-  <section class="hero gutter" id="top">
+<main>
+<div class="page" data-page="trang-chu" id="trang-chu">
+  <section class="hero gutter">
     <div class="wrap">
-      <div class="hero-copy">
-        <h1>YouTube trên màn hình xe. <em>Tốc độ, camera, làn đường</em> vẫn luôn trước mắt.</h1>
-        <p class="lede">NTV DriveTV mở YouTube và trang web ngay trên màn hình Android Auto của xe bạn. Bong bóng tốc độ lấy dữ liệu từ Waze Mod nổi phía trên video, nên vừa nghe nhạc, xem video lúc dừng xe, vừa không bỏ lỡ biển báo hay camera.</p>
-        <ul class="chips" aria-label="Điểm chính">
-          <li>Không cần root</li>
-          <li>Android 10 trở lên</li>
-          <li>Cài từ Google Play</li>
-          <li>Chạy cả khi khoá máy</li>
-        </ul>
-        <div class="actions">
-          <a class="btn primary" href="#bang-gia">Mua <span class="price-tag" data-price>200.000đ</span></a>
-          <a class="btn ghost" href="#tinh-nang">Xem tính năng</a>
+      <div class="hero-box box">
+        <svg class="spark s1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></svg>
+        <svg class="spark s2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></svg>
+        <div class="hero-copy">
+          <span class="tag">Cho xe có Android Auto</span>
+          <h1>Xem YouTube trên màn hình xe mà vẫn biết tốc độ, camera phía trước</h1>
+          <p class="lede">NTV DriveTV giúp bạn mở YouTube ngay trên màn hình Android Auto của xe. Ở góc màn hình luôn có một bong bóng nhỏ cho bạn biết <span class="mark">đoạn đường cho chạy tối đa bao nhiêu</span>, <span class="mark">xe đang chạy bao nhiêu</span>, <span class="mark">sắp rẽ ở đâu</span> và <span class="mark">phía trước có camera không</span>. Số liệu lấy từ Waze Mod trên điện thoại, nên Waze báo gì thì bong bóng hiện đúng như vậy.</p>
+          <div class="actions">
+            <a class="btn dark" href="#cach-mua">Dùng thử miễn phí <span data-trial>3</span> ngày <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn light" href="#man-hinh">Xem trên màn hình giống xe bạn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          </div>
         </div>
       </div>
-      <div class="stage">
-        <div class="screen"><img src="img/car-video.jpg" width="1190" height="700" alt="Màn hình Android Auto đang phát video toàn màn hình, bên phải là Google Maps dẫn đường."></div>
-        <div class="bubble"><img src="img/hero-h.png" width="1654" height="129" alt="Bong bóng tốc độ dạng ngang: biển 60, tốc độ 48 km/h, rẽ phải 250 m, làn nên đi, camera 420 m có thanh đếm, đổi giới hạn 60 sau 1,9 km, kẹt xe 3,1 km thêm 5 phút, nút Báo cáo."></div>
+
+      <div class="showcase box">
+        <div class="bar">
+          <div class="title"><span class="ic"><svg viewBox="18 18 72 72" aria-hidden="true"><path d="M28,30h52a6,6 0,0 1,6 6v34a6,6 0,0 1,-6 6h-52a6,6 0,0 1,-6 -6v-34a6,6 0,0 1,6 -6z" fill="#FFFFFF"/><path d="M29,34h50a3,3 0,0 1,3 3v32a3,3 0,0 1,-3 3h-50a3,3 0,0 1,-3 -3v-32a3,3 0,0 1,3 -3z" fill="#1B2633"/><path d="M54,40a13,13 0,1 1,0 26a13,13 0,1 1,0 -26z" fill="#FF3D3D"/><path d="M50,46.5L50,59.5L61,53Z" fill="#FFFFFF"/><path d="M42,78h24v3h-24z" fill="#FFFFFF"/></svg></span><div><b>Trên màn hình xe</b><small>Ảnh chụp thật của app, phim hoạt hình Big Buck Bunny</small></div></div>
+          <div class="seg" role="group" aria-label="Kiểu bong bóng">
+            <button type="button" aria-pressed="true" data-shot="doc">Bong bóng dọc</button>
+            <button type="button" aria-pressed="false" data-shot="ngang">Bong bóng ngang</button>
+          </div>
+        </div>
+        <div class="shot">
+          <img data-shot-img="doc" src="img/hero-man-dai.jpg" width="1600" height="600" alt="Màn hình xe dài đang chiếu phim hoạt hình toàn màn hình, góc phải là bong bóng dọc: biển 60, đang chạy 52 km/h, rẽ phải 250 m vào Nguyễn Văn Linh, làn phải được tô, camera 400 m, đổi lên 80 sau 700 m, nút Báo cáo. Bên phải là Google Maps.">
+          <img data-shot-img="ngang" src="img/mh-man-dai-video.jpg" width="1600" height="600" loading="lazy" alt="Màn hình xe dài chiếu phim hoạt hình, phía trên là bong bóng ngang: biển 60, 52 km/h, rẽ phải 250 m, làn đường, camera 400 m, đổi lên 80 sau 700 m." hidden>
+        </div>
+        <div class="legend"><span><i>60</i> đường cho chạy tối đa</span><span><i>52</i> xe đang chạy</span><span><i>↱ 250 m</i> chỗ rẽ sắp tới, kèm làn nên đi</span><span><i>📷 400 m</i> camera phía trước</span><span><i>80 · 700 m</i> sắp đổi tốc độ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block gutter">
+    <div class="wrap">
+      <div class="head-row">
+        <h2>App giúp được gì cho bạn</h2>
+        <p>Không chỉ để xem YouTube, app còn nhắc bạn tốc độ, camera và đường đi, để mỗi chuyến đi nhẹ nhàng và yên tâm hơn.</p>
+      </div>
+      <div class="cards">
+        <article class="fcard c-blue">
+          <span class="pill">YouTube</span>
+          <h3>YouTube trên xe</h3>
+          <p>Bạn đăng nhập YouTube của mình là có sẵn lịch sử xem, danh sách phát; tài khoản Premium thì không có quảng cáo. Dừng, phát, tua ngay trên vô-lăng, hoặc chỉ cần nói "Hey Google, phát … trên DriveTV".</p>
+          <div class="art"><span class="chip l">Premium</span><span class="chip r">Giọng nói</span><svg viewBox="18 18 72 72" aria-hidden="true"><path d="M28,30h52a6,6 0,0 1,6 6v34a6,6 0,0 1,-6 6h-52a6,6 0,0 1,-6 -6v-34a6,6 0,0 1,6 -6z" fill="#FFFFFF"/><path d="M29,34h50a3,3 0,0 1,3 3v32a3,3 0,0 1,-3 3h-50a3,3 0,0 1,-3 -3v-32a3,3 0,0 1,3 -3z" fill="#1B2633"/><path d="M54,40a13,13 0,1 1,0 26a13,13 0,1 1,0 -26z" fill="#FF3D3D"/><path d="M50,46.5L50,59.5L61,53Z" fill="#FFFFFF"/><path d="M42,78h24v3h-24z" fill="#FFFFFF"/></svg></div>
+        </article>
+        <article class="fcard c-red">
+          <span class="pill">Bong bóng</span>
+          <h3>Bong bóng tốc độ</h3>
+          <p>Biển giới hạn và tốc độ xe hiện bằng số lớn, liếc qua là thấy. Chạy tới giới hạn thì số chuyển cam, lỡ chạy quá thì nháy đỏ nhắc bạn. Bong bóng để dọc hay ngang, to hay nhỏ, đặt chỗ nào tuỳ bạn.</p>
+          <div class="art"><span class="chip l">52 km/h</span><span class="chip r">Dọc · Ngang</span><span class="sign">60</span></div>
+        </article>
+        <article class="fcard c-orange">
+          <span class="pill">Cảnh báo</span>
+          <h3>Camera, chỗ rẽ, làn đường</h3>
+          <p>Còn khoảng 500 m tới camera là có thanh đếm lùi để bạn kịp giảm tốc. Gần tới ngã rẽ thì hiện mũi tên, tên đường và làn nên đi. Phía trước sắp đổi tốc độ hay đang kẹt xe cũng được báo trước.</p>
+          <div class="art"><span class="chip l">400 m</span><span class="chip r">↱ 250 m</span><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24,0.5a23.5,23.5 0,1 1,0 47.0a23.5,23.5 0,1 1,0 -47.0z" fill="#FFFFFF"/><path d="M24,2.5a21.5,21.5 0,1 1,0 43.0a21.5,21.5 0,1 1,0 -43.0z" fill="#FF8A00"/><path d="M14,16h13a3,3 0,0 1,3,3v6a3,3 0,0 1,-3,3h-13a3,3 0,0 1,-3,-3v-6a3,3 0,0 1,3,-3z" fill="#FFFFFF"/><path d="M30,18.5L37,16V28L30,25.5z" fill="#FFFFFF"/><path d="M16.5,19.8a2.2,2.2 0,1 1,0 4.4a2.2,2.2 0,1 1,0 -4.4z" fill="#FF8A00"/><path d="M20.5,28V35" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5,34.5h8a1.5,1.5 0,0 1,1.5,1.5v0a1.5,1.5 0,0 1,-1.5,1.5h-8a1.5,1.5 0,0 1,-1.5,-1.5v-0a1.5,1.5 0,0 1,1.5,-1.5z" fill="#FFFFFF"/></svg></div>
+        </article>
+        <article class="fcard c-green">
+          <span class="pill">Cạnh bản đồ</span>
+          <h3>Hiện cạnh bản đồ</h3>
+          <p>Mở Google Maps hay Waze để chỉ đường, thẻ DriveTV bên cạnh bản đồ vẫn hiện biển giới hạn, tốc độ xe, chỗ rẽ và camera. Video thì vẫn phát tiếng bình thường.</p>
+          <div class="art"><span class="chip l">Google Maps</span><span class="chip r">Waze</span><svg viewBox="18 18 72 72" aria-hidden="true"><path d="M28,30h52a6,6 0,0 1,6 6v34a6,6 0,0 1,-6 6h-52a6,6 0,0 1,-6 -6v-34a6,6 0,0 1,6 -6z" fill="#FFFFFF"/><path d="M29,34h50a3,3 0,0 1,3 3v32a3,3 0,0 1,-3 3h-50a3,3 0,0 1,-3 -3v-32a3,3 0,0 1,3 -3z" fill="#1B2633"/><path d="M31,67C35,60 34,54 40,50S47,44 47,42" fill="none" stroke="#6B7A8F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M47,37a3.5,3.5 0,1 1,0 7a3.5,3.5 0,1 1,0 -7z" fill="#6B7A8F"/><path d="M57,39h19a3,3 0,0 1,3 3v24a3,3 0,0 1,-3 3h-19a3,3 0,0 1,-3 -3v-24a3,3 0,0 1,3 -3z" fill="#FF3D3D"/><path d="M60,57.5a6.5,6.5 0,1 1,13 0" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M66.5,57.5L70,52.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M60,62h13v2.5h-13z" fill="#FFFFFF"/><path d="M42,78h24v3h-24z" fill="#FFFFFF"/></svg></div>
+        </article>
+        <article class="fcard c-purple">
+          <span class="pill">Menu</span>
+          <h3>Menu trên xe</h3>
+          <p>Chạm vào tay nắm nhỏ ở mép màn hình là mở menu: về trang chủ YouTube, tải lại trang, chuyển sang giao diện TV, bật hay tắt bong bóng. Xe có núm xoay hay phím bấm cũng dùng được luôn.</p>
+          <div class="art"><span class="chip l">TV Mode</span><span class="chip r">Núm xoay</span><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24,0.5a23.5,23.5 0,1 1,0 47.0a23.5,23.5 0,1 1,0 -47.0z" fill="#FFFFFF"/><path d="M24,2.5a21.5,21.5 0,1 1,0 43.0a21.5,21.5 0,1 1,0 -43.0z" fill="#3D8BFF"/><path d="M10.5,18L24,11.5L37.5,18L34.5,25H13.5z" fill="#FFFFFF"/><path d="M14.5,24h19a1,1 0,0 1,1,1v2.5a1,1 0,0 1,-1,1h-19a1,1 0,0 1,-1,-1v-2.5a1,1 0,0 1,1,-1z" fill="#1B2633"/><path d="M13.5,28.5H34.5Q33,35 24,35Q15,35 13.5,28.5z" fill="#FFFFFF"/><path d="M24,14.6L27.2,16V18.8C27.2,20.7 25.8,22 24,22.5C22.2,22 20.8,20.7 20.8,18.8V16z" fill="#FFC233"/></svg></div>
+        </article>
+        <article class="fcard c-teal">
+          <span class="pill">Báo bản đồ</span>
+          <h3>Báo lỗi bản đồ</h3>
+          <p>Gặp chỗ Waze báo sai tốc độ hay thiếu camera, bạn bấm Báo cáo trên xe để ghi lại. Về nhà xuất danh sách ra file gửi cho người sửa bản đồ Waze, hoặc tự sửa trên Waze Map Editor.</p>
+          <div class="art"><span class="chip l">CSV</span><span class="chip r">GeoJSON</span><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24,0.5a23.5,23.5 0,1 1,0 47.0a23.5,23.5 0,1 1,0 -47.0z" fill="#FFFFFF"/><path d="M24,2.5a21.5,21.5 0,1 1,0 43.0a21.5,21.5 0,1 1,0 -43.0z" fill="#F5C400"/><path d="M24,9.5C24.9,9.5 25.6,10 26,10.7L38.2,32.3C39,33.8 37.9,35.5 36.2,35.5H11.8C10.1,35.5 9,33.8 9.8,32.3L22,10.7C22.4,10 23.1,9.5 24,9.5z" fill="#1B2633"/><path d="M24.0,17h0a1.6,1.6 0,0 1,1.6,1.6v7.3a1.6,1.6 0,0 1,-1.6,1.6h-0a1.6,1.6 0,0 1,-1.6,-1.6v-7.3a1.6,1.6 0,0 1,1.6,-1.6z" fill="#F5C400"/><path d="M24,29.1a1.9,1.9 0,1 1,0 3.8a1.9,1.9 0,1 1,0 -3.8z" fill="#F5C400"/></svg></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block gutter">
+    <div class="wrap">
+      <a class="teaser box" href="#carcast">
+        <span class="tag">Miễn phí</span>
+        <div><b>Máy bạn đã root? Thử NTV CarCast</b><p>App miễn phí của mình cho máy đã root: mở gần như mọi app điện thoại trên màn hình xe, chia đôi, chia ba màn hình.</p></div>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+</div>
+<div class="page" data-page="tinh-nang" id="tinh-nang" hidden>
+  <section class="block gutter first">
+    <div class="wrap">
+      <div class="head"><h2>Bong bóng tốc độ cho bạn biết những gì</h2><p>Bên trái là hai con số bạn cần nhất: đoạn đường cho chạy tối đa bao nhiêu và xe đang chạy bao nhiêu. Bên phải là những gì sắp tới, cái gần nhất nằm trên cùng: chỗ rẽ và làn nên đi, camera, chỗ đổi tốc độ, đoạn kẹt xe. Bong bóng có nằm đè lên video thì bạn vẫn chạm vào video như bình thường.</p></div>
+      <div class="visual box solo">
+        <img src="img/hero-v.png" width="1206" height="874" loading="lazy" alt="Bong bóng dọc: biển 60, đang chạy 48 km/h; rẽ phải 250 m vào Võ Nguyên Giáp; bốn làn, làn phải được tô; camera 420 m; biển 60 sau 1,9 km; kẹt xe 3,1 km thêm 5 phút; nút Báo cáo.">
+        <img src="img/hero-h-over.png" width="2205" height="172" loading="lazy" alt="Bong bóng ngang lúc chạy quá tốc độ: khối tốc độ nền đỏ, 72 km/h trong khi giới hạn 60.">
+        <p class="note">Trên là bong bóng dọc lúc sắp tới ngã rẽ. Dưới là bong bóng ngang lúc lỡ chạy quá tốc độ, phần tốc độ chuyển sang đỏ.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block gutter">
+    <div class="wrap">
+      <div class="head"><h2>Đang chỉ đường bằng Google Maps hay Waze vẫn thấy tốc độ</h2><p>Lúc không xem video, bạn cứ để bản đồ chiếm màn hình. Thẻ DriveTV bên cạnh vẫn hiện biển giới hạn và tốc độ xe. Dòng trên cho biết còn bao xa tới chỗ rẽ và rẽ vào đường nào. Dòng dưới chỉ nhắc những gì đáng để ý như camera, CSGT, đổi tốc độ, trạm thu phí. Video vẫn phát tiếng, bạn quay lại là thấy hình ngay.</p></div>
+      <div class="visual box solo wide"><div class="dark"><img src="img/mh-1280x720-ban-do.jpg" width="1280" height="720" loading="lazy" alt="Google Maps bên trái; thẻ DriveTV bên phải có biển 60 to, tốc độ 52 trong vòng tròn nhỏ, viên camera 400 m, dòng rẽ phải 250 m vào Nguyễn Văn Linh và dòng Camera 400 m."></div></div>
+    </div>
+  </section>
+
+  <section class="block gutter">
+    <div class="wrap">
+      <div class="head">
+        <h2>Thấy Waze báo sai? Ghi lại để sửa</h2>
+        <p>Dữ liệu tốc độ và camera của Waze do chính người dùng cập nhật, nên đôi chỗ vẫn còn sai, ví dụ đường đã đổi biển 60 mà Waze vẫn báo 50, hay có camera mà Waze chưa biết. Tính năng này giúp bạn ghi lại những chỗ đó ngay lúc đi qua, để sửa sau cho đúng.</p>
+        <ol class="howto">
+          <li><b>Trên xe, bấm Báo cáo</b> (nút trên bong bóng hoặc trong menu) rồi chọn loại lỗi: sai tốc độ, thiếu camera, cảnh báo sai, biển cấm… App tự lưu lại vị trí, tốc độ, biển Waze đang báo và tên đường.</li>
+          <li><b>Về nhà, mở mục Báo cáo bản đồ</b> trên điện thoại để xem lại từng chỗ đã ghi.</li>
+          <li><b>Xuất file</b> gửi cho người sửa bản đồ Waze ở khu vực bạn, hoặc tự vào Waze Map Editor sửa. Sửa xong thì lần sau đi qua, Waze sẽ báo đúng cho bạn và cho cả những người đi sau.</li>
+        </ol>
+        <p class="note">Báo cáo chỉ nằm trong điện thoại của bạn, app không tự gửi đi đâu cả.</p>
+      </div>
+      <div class="split even">
+        <div class="visual box"><div class="dark"><img src="img/report-1.jpg" width="486" height="286" loading="lazy" alt="Bảng Báo cáo lỗi bản đồ trên xe: đã lấy vị trí; các ô Đánh dấu nhanh, Sai tốc độ, Thiếu camera, Cảnh báo sai, Biển cấm, Hết cấm, Khác, Đóng."></div></div>
+        <div class="visual box"><div class="dark"><img src="img/report-2.jpg" width="486" height="364" loading="lazy" alt="Bước hai của báo cáo Sai tốc độ: chọn biển đúng từ 30 đến 120."></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block gutter">
+    <div class="wrap">
+      <div class="head"><h2>Trên điện thoại</h2><p>Mọi cài đặt đều làm trên điện thoại, gọn trong ba thẻ. Lúc lên xe bạn không phải chỉnh gì thêm.</p></div>
+      <div class="phones">
+        <figure class="box"><img src="img/phone-home.jpg" width="540" height="1200" loading="lazy" alt="Thẻ Tổng quan: tài khoản và gói đang dùng, việc cần làm, danh sách đã sẵn sàng, báo cáo bản đồ."><figcaption><b>Tổng quan</b>Xem gói đang dùng và những gì còn cần chuẩn bị. Đủ dấu tích xanh là lên xe được.</figcaption></figure>
+        <figure class="box"><img src="img/phone-bubble.jpg" width="540" height="1200" loading="lazy" alt="Thẻ Bong bóng: xem trước bong bóng, bật tắt, chọn kiểu dọc hoặc ngang, cỡ và độ đậm nền."><figcaption><b>Bong bóng</b>Chọn kiểu dọc hay ngang, cỡ chữ, độ đậm nền. Chỉnh tới đâu thấy bản xem trước đổi tới đó.</figcaption></figure>
+        <figure class="box"><img src="img/phone-settings.jpg" width="540" height="1200" loading="lazy" alt="Thẻ Cài đặt: tài khoản, số máy, giao diện YouTube trên xe, ngôn ngữ, vị trí tay nắm menu."><figcaption><b>Cài đặt</b>Tài khoản và số máy, giao diện YouTube Mobile hay TV, ngôn ngữ YouTube trên xe, vị trí tay nắm menu.</figcaption></figure>
       </div>
     </div>
   </section>
 </div>
-
-<main>
-  <section class="block gutter" id="tinh-nang">
+<div class="page" data-page="man-hinh" hidden>
+  <section class="block gutter first" id="man-hinh">
     <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Tính năng</span>
-        <h2>Mọi thứ cần cho một chuyến đi dài</h2>
+      <div class="head-row">
+        <h2>Xem trước trên màn hình giống xe bạn</h2>
+        <p>Bạn chọn cỡ màn hình gần giống xe mình để xem trước nhé. Mỗi cỡ có hai ảnh: lúc xem video toàn màn hình và lúc đang chỉ đường.</p>
       </div>
-      <div class="features">
-        <article class="feature">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 15.5v-7l6 3.5-6 3.5ZM21 6.5c-.2-1.1-1.1-2-2.2-2.2C17 4 12 4 12 4s-5 0-6.8.3C4.1 4.5 3.2 5.4 3 6.5 2.7 8.3 2.7 12 2.7 12s0 3.7.3 5.5c.2 1.1 1.1 2 2.2 2.2C7 20 12 20 12 20s5 0 6.8-.3c1.1-.2 2-1.1 2.2-2.2.3-1.8.3-5.5.3-5.5s0-3.7-.3-5.5Z"/></svg></span>
-          <h3>YouTube trên xe</h3>
-          <p>Giao diện Mobile hoặc TV, đăng nhập YouTube Premium. Phím vô-lăng tua, dừng, phát; tìm video bằng giọng nói.</p>
-        </article>
-        <article class="feature">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="8.5"/><path d="M12 12l4-3" stroke-linecap="round"/></svg></span>
-          <h3>Bong bóng tốc độ</h3>
-          <p>Biển giới hạn và tốc độ của bạn, chữ số to. Chạm giới hạn chuyển cam, vượt tốc nháy đỏ. Dọc hoặc ngang, ba cỡ, kéo đi đâu cũng được.</p>
-        </article>
-        <article class="feature">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9Zm3 5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"/></svg></span>
-          <h3>Camera, rẽ và làn</h3>
-          <p>Camera và đèn đỏ có thanh đếm ngược từ 500 m. Hướng rẽ kèm tên đường, làn nên đi, kẹt xe, vùng tốc độ trung bình.</p>
-        </article>
-        <article class="feature">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m15 5-6-2-6 2v16l6-2 6 2 6-2V3l-6 2Zm0 13.8-6-2V5.2l6 2v11.6Z"/></svg></span>
-          <h3>Cạnh bản đồ</h3>
-          <p>Đang mở Waze hay Google Maps, thẻ DriveTV bên cạnh vẫn hiện biển giới hạn, tốc độ của bạn, camera hoặc hướng rẽ sắp tới và trạng thái Waze Mod.</p>
-        </article>
-        <article class="feature">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z"/></svg></span>
-          <h3>Menu một chạm</h3>
-          <p>Tay nắm nhỏ ở mép màn hình, chạm một lần là mở. Dùng được núm xoay và phím của xe. Trang tự đổi sáng tối theo xe.</p>
-        </article>
-        <article class="feature">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21Zm12-3h-2v-2h2v2Zm0-4h-2v-4h2v4Z"/></svg></span>
-          <h3>Báo lỗi bản đồ</h3>
-          <p>Thấy biển sai hay thiếu camera, hai chạm là lưu kèm vị trí. Về nhà xuất CSV, mở Waze Map Editor đúng chỗ để sửa.</p>
-        </article>
+      <div class="tabs" role="tablist" aria-label="Loại màn hình">
+        <button type="button" role="tab" aria-selected="true" data-tab="800x480">Màn nhỏ 7 inch<small>800 × 480</small></button>
+        <button type="button" role="tab" aria-selected="false" data-tab="1280x720">Màn 8 – 9 inch<small>1280 × 720</small></button>
+        <button type="button" role="tab" aria-selected="false" data-tab="1920x1080">Màn 10 inch trở lên<small>1920 × 1080</small></button>
+        <button type="button" role="tab" aria-selected="false" data-tab="man-dai">Màn dài<small>1920 × 720</small></button>
+        <button type="button" role="tab" aria-selected="false" data-tab="man-doc">Màn dọc<small>1080 × 1920</small></button>
       </div>
+      <div class="panel box" data-panel="800x480">
+        <figure><figcaption>Xem video</figcaption><img src="img/mh-800x480-video.jpg" width="800" height="480" loading="lazy" alt="Màn 800×480: video toàn màn hình, bong bóng ngang phía trên."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-800x480-ban-do.jpg" width="800" height="480" loading="lazy" alt="Màn 800×480: Google Maps và thẻ DriveTV."></figure>
+        <p class="note">Màn nhỏ thì bong bóng thu gọn thành một dải mỏng ở trên, video vẫn chiếm gần trọn màn hình.</p>
+      </div>
+      <div class="panel box" data-panel="1280x720" hidden>
+        <figure><figcaption>Xem video</figcaption><img src="img/mh-1280x720-video.jpg" width="1280" height="720" loading="lazy" alt="Màn 1280×720: video bên trái có bong bóng ngang, Google Maps bên phải."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-1280x720-ban-do.jpg" width="1280" height="720" loading="lazy" alt="Màn 1280×720: Google Maps và thẻ DriveTV."></figure>
+        <p class="note">Đây là cỡ màn hình phổ biến nhất. Video và bản đồ nằm cạnh nhau, bạn không phải chuyển qua lại.</p>
+      </div>
+      <div class="panel box" data-panel="1920x1080" hidden>
+        <figure><figcaption>Xem video</figcaption><img src="img/mh-1920x1080-video.jpg" width="1280" height="707" loading="lazy" alt="Màn 1920×1080: video và bong bóng ngang, Google Maps bên phải."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-1920x1080-ban-do.jpg" width="1280" height="707" loading="lazy" alt="Màn 1920×1080: Google Maps và thẻ DriveTV."></figure>
+        <p class="note">Màn hình độ nét cao thì chữ và số trong bong bóng tự lớn theo, ngồi ghế lái nhìn vẫn rõ.</p>
+      </div>
+      <div class="panel box wide" data-panel="man-dai" hidden>
+        <figure><figcaption>Xem video</figcaption><img src="img/mh-man-dai-video.jpg" width="1600" height="600" loading="lazy" alt="Màn dài 1920×720: video lớn với bong bóng ngang, Google Maps bên phải."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-man-dai-ban-do.jpg" width="1600" height="600" loading="lazy" alt="Màn dài 1920×720: Google Maps và thẻ DriveTV có thêm nút Đánh dấu."></figure>
+        <p class="note">Màn hình dài thì video rộng rãi hơn, bong bóng ngang đủ chỗ hiện cả camera lẫn chỗ đổi tốc độ.</p>
+      </div>
+      <div class="panel box tall" data-panel="man-doc" hidden>
+        <figure><figcaption>Xem video</figcaption><img src="img/mh-man-doc-video.jpg" width="607" height="1061" loading="lazy" alt="Màn dọc: bản đồ phía trên, video với bong bóng ngang phía dưới."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-man-doc-ban-do.jpg" width="607" height="1061" loading="lazy" alt="Màn dọc: Google Maps phía trên, thẻ DriveTV nhỏ phía dưới."></figure>
+        <p class="note">Màn hình dọc thì bản đồ ở trên, video ở dưới. Thẻ DriveTV nhỏ hơn nên bạn xem chủ yếu qua hai dòng chữ.</p>
+      </div>
+      <p class="fineprint">Ảnh chụp trên bộ giả lập màn hình xe của Google, số liệu tốc độ là cảnh mẫu. Trên xe thật, cách Android Auto chia màn hình có thể khác một chút tuỳ hãng xe.</p>
     </div>
   </section>
 
-  <section class="block gutter">
+</div>
+<div class="page" data-page="bang-gia" hidden>
+  <section class="block gutter first" id="bang-gia">
     <div class="wrap">
-      <div class="show">
-        <div class="media pair">
-          <div class="bare"><img src="img/hero-v.png" width="903" height="655" alt="Bong bóng dọc: biển 60, tốc độ 48 km/h; rẽ phải 250 m vào Võ Nguyên Giáp; bốn làn, làn phải được tô; camera 420 m; đổi giới hạn 1,9 km; kẹt xe 3,1 km thêm 5 phút; nút Báo cáo."></div>
-          <div class="bare"><img src="img/hero-h-over.png" width="1654" height="129" alt="Dải ngang khi vượt tốc: khối tốc độ nền đỏ, 72 km/h so với giới hạn 60."></div>
-        </div>
-        <div class="copy">
-          <span class="eyebrow">Liếc một lần là đủ</span>
-          <h2>Thông tin lái xe nằm gọn một góc</h2>
-          <p>Khối bên trái là thứ quan trọng nhất: giới hạn và tốc độ của bạn. Bên phải là cảnh báo, gần trước xa sau. Sắp tới ngã rẽ thì hướng rẽ và làn đường được đẩy lên đầu.</p>
-          <ul class="ticks">
-            <li>Chạm vào chỗ trống quanh bong bóng vẫn bấm được video</li>
-            <li>Chế độ gọn: chỉ tốc độ và một cảnh báo</li>
-            <li>Không cần mở Waze trên màn xe</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block gutter">
-    <div class="wrap">
-      <div class="show flip">
-        <div class="media frame"><img src="img/car-media-card.jpg" width="1190" height="700" alt="Google Maps ban đêm bên trái; thẻ DriveTV bên phải: viên Waze Mod chấm xanh, biển 60 to, tốc độ 63 trong vòng tròn nhỏ màu cam, viên rẽ phải 300 m, dòng Camera 540 m và Cảnh sát 1,5 km."></div>
-        <div class="copy">
-          <span class="eyebrow">Khi đang dẫn đường</span>
-          <h2>Tốc độ vẫn ở cạnh bản đồ</h2>
-          <p>Không xem video thì cứ để Waze hay Google Maps toàn màn hình. Thẻ DriveTV bên cạnh vẫn hiện biển giới hạn to, tốc độ của bạn và những gì sắp tới.</p>
-          <ul class="ticks">
-            <li>Tốc độ chạm giới hạn chuyển cam, vượt tốc chuyển đỏ</li>
-            <li>Viên camera hoặc hướng rẽ gần nhất ngay dưới biển</li>
-            <li>Hai dòng chữ cho cảnh báo kế tiếp</li>
-            <li>Chấm xanh cho biết đang nhận dữ liệu từ Waze Mod</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block gutter">
-    <div class="wrap">
-      <div class="show">
-        <div class="media pair">
-          <div class="frame"><img src="img/report-1.jpg" width="486" height="286" alt="Bảng Báo cáo lỗi bản đồ trên xe: đã lấy vị trí; các ô Đánh dấu nhanh, Sai tốc độ, Thiếu camera, Cảnh báo sai, Biển cấm, Hết cấm, Khác, Đóng."></div>
-          <div class="frame"><img src="img/report-2.jpg" width="486" height="364" alt="Bước hai của báo cáo Sai tốc độ: chọn biển đúng từ 30 đến 120."></div>
-        </div>
-        <div class="copy">
-          <span class="eyebrow">Báo lỗi bản đồ</span>
-          <h2>Biển sai? Hai chạm là xong</h2>
-          <p>App lưu vị trí ngay lúc bạn bấm, kèm tốc độ, giới hạn đang báo và tên đường. Báo cáo chỉ nằm trong máy bạn, không gửi đi đâu.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block gutter" id="bang-gia">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Bảng giá</span>
-        <h2>Một giá, đủ mọi tính năng</h2>
+      <div class="head-row">
+        <h2>Giá bản quyền</h2>
+        <p>Bạn cứ cài app dùng thử miễn phí <span data-trial>3</span> ngày với đầy đủ tính năng. Thấy hợp rồi hãy mua nhé.</p>
       </div>
       <div class="pricing">
-        <div class="plan">
-          <div class="amount"><b data-price>200.000đ</b><span>trả một lần</span></div>
+        <div class="plan box">
+          <div class="amount"><b data-price>200.000đ</b><span>một lần</span></div>
+          <div class="terms-box" id="terms" hidden><b>Khi mua bản quyền</b><ul class="ticks"></ul></div>
           <ul class="ticks">
             <li>YouTube và trang web trên màn hình Android Auto</li>
-            <li>Bong bóng tốc độ, camera, rẽ, làn từ Waze Mod</li>
+            <li>Bong bóng tốc độ, camera, chỗ rẽ, làn đường từ Waze Mod</li>
             <li>Tốc độ trên thẻ cạnh bản đồ</li>
-            <li>Menu một chạm, phím vô-lăng, giọng nói</li>
-            <li>Báo lỗi bản đồ, xuất CSV và GeoJSON</li>
-            <li>Cài chính thức qua Google Play bằng email của bạn</li>
+            <li>Menu một chạm, nút vô-lăng, tìm bằng giọng nói</li>
+            <li>Báo lỗi bản đồ, xuất file CSV và GeoJSON</li>
           </ul>
-          <div class="terms" id="terms" hidden></div>
-          <a class="btn primary" href="#cach-mua">Mua ngay</a>
+          <a class="btn dark" href="#cach-mua">Mua ngay</a>
         </div>
-        <div class="head" id="cach-mua">
-          <h3>Cách mua</h3>
+        <div class="buy box" id="cach-mua">
+          <h3>Cách mua và kích hoạt bản quyền</h3>
           <ol class="steps">
-            <li><div><b>Gửi email Google Play của bạn</b><span>Email đang đăng nhập Google Play trên điện thoại sẽ dùng xe.</span></div></li>
-            <li><div><b>Chuyển khoản <span data-price>200.000đ</span></b><span id="bank-line">Ghi email của bạn trong nội dung chuyển khoản.</span></div></li>
-            <li><div><b>Nhận link cài</b><span>Email của bạn được thêm vào danh sách cài trên Google Play, bạn nhận link mở thẳng Google Play.</span></div></li>
-            <li><div><b>Cắm xe và dùng</b><span>Mở NTV DriveTV trên điện thoại, cho phép Waze Mod, rồi chọn app trên màn hình Android Auto.</span></div></li>
+            <li><div><b>Gửi mình email Google của bạn</b><span>Là email đang đăng nhập Google Play trên điện thoại bạn dùng với xe. Mình sẽ thêm email này vào danh sách được cài app trên Google Play.</span></div></li>
+            <li><div><b>Cài app và dùng thử</b><span>Mình gửi bạn link Google Play. Cài xong, bạn mở app, đăng nhập bằng email đó rồi cắm xe là dùng thử được <span data-trial>3</span> ngày.</span></div></li>
+            <li><div><b>Thấy hợp thì chuyển khoản <span data-price>200.000đ</span></b><span id="bank-line">Nội dung chuyển khoản bạn ghi email của mình giúp mình nhé.</span></div></li>
+            <li><div><b>Nhận kích hoạt</b><span>Mình kích hoạt bản quyền cho email của bạn, thường ngay trong ngày. Mở app trên điện thoại là thấy gói đã kích hoạt; trên xe thì có hiệu lực từ lần cắm xe kế tiếp, không cần cài lại gì.</span></div></li>
           </ol>
           <div class="contact" id="contact" aria-label="Liên hệ"></div>
           <p class="todo" id="contact-todo" hidden>Chưa điền thông tin liên hệ. Sửa khối <code>window.DRIVETV</code> ở đầu file trước khi đăng.</p>
@@ -387,60 +563,125 @@
 
   <section class="block gutter" id="can-co">
     <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Cần có</span>
-        <h2>Kiểm tra trước khi mua</h2>
-      </div>
-      <div class="tablebox">
-        <table class="req">
-          <tbody>
-            <tr><th scope="row">Điện thoại</th><td>Android 10 trở lên, không cần root.</td></tr>
-            <tr><th scope="row">Xe</th><td>Có Android Auto, kết nối dây hoặc không dây.</td></tr>
-            <tr><th scope="row">Dữ liệu tốc độ</th><td>Waze Mod V14 trở lên (có Data API), mở trên điện thoại khi đi. Không có Waze Mod thì vẫn xem video được, chỉ không có bong bóng tốc độ.</td></tr>
-            <tr><th scope="row">YouTube</th><td>Nên có YouTube Premium để không có quảng cáo. App không chặn quảng cáo.</td></tr>
-            <tr><th scope="row">Android Auto</th><td>Bật chế độ nhà phát triển và Unknown sources một lần (có hướng dẫn khi nhận link cài).</td></tr>
-          </tbody>
-        </table>
+      <div class="head"><h2>Bạn cần chuẩn bị gì</h2></div>
+      <div class="reqs">
+        <div class="req box"><b>Điện thoại</b><p>Android 10 trở lên, có Google Play, không cần root. Riêng máy Huawei đời mới không có dịch vụ Google nên không chạy được Android Auto.</p></div>
+        <div class="req box"><b>Xe</b><p>Xe có Android Auto, kết nối bằng dây hay không dây đều được.</p></div>
+        <div class="req box"><b>Tài khoản</b><p>Một tài khoản Google để đăng nhập app và giữ bản quyền.</p></div>
+        <div class="req box"><b>Dữ liệu tốc độ</b><p>Waze Mod V14 trở lên (có Data API) và mở Waze trên điện thoại khi đi. Chưa có Waze Mod thì bạn vẫn xem video được, chỉ là không có bong bóng tốc độ.</p></div>
+        <div class="req box"><b>YouTube</b><p>Nên có YouTube Premium để xem không bị quảng cáo, vì app không chặn quảng cáo.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="block gutter" id="hoi-dap">
+</div>
+<div class="page" data-page="hoi-dap" hidden>
+  <section class="block gutter first" id="hoi-dap">
     <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Hỏi đáp</span>
-        <h2>Câu hỏi thường gặp</h2>
-      </div>
+      <div class="head"><h2>Câu hỏi thường gặp</h2></div>
       <div class="faq">
-        <details><summary>Xe của tôi có dùng được không?</summary><p>Xe có Android Auto và điện thoại Android 10 trở lên là dùng được. Màn hình rộng thì video và bản đồ hiện cạnh nhau.</p></details>
-        <details><summary>Có cần root hay cài gì phức tạp không?</summary><p>Không. App cài từ Google Play như app thường. Chỉ cần bật Unknown sources trong cài đặt Android Auto một lần.</p></details>
-        <details><summary>Bong bóng tốc độ lấy dữ liệu từ đâu?</summary><p>Từ Waze Mod chạy trên điện thoại: giới hạn, tốc độ, camera, cảnh báo, hướng rẽ và làn. App không tự dò tốc độ bằng GPS.</p></details>
-        <details><summary>Không có Waze Mod thì sao?</summary><p>Vẫn xem YouTube và trang web bình thường. Bong bóng chỉ hiện dòng báo chưa có dữ liệu, bạn có thể tắt nó.</p></details>
-        <details><summary>Có bị quảng cáo YouTube không?</summary><p>App dùng YouTube như trên trình duyệt và không chặn quảng cáo. Đăng nhập tài khoản YouTube Premium thì không có quảng cáo.</p></details>
-        <details><summary>Khoá điện thoại có chạy không?</summary><p>Có. Bạn khoá màn hình điện thoại cho mát máy, video và bong bóng trên xe vẫn chạy.</p></details>
-        <details><summary>Báo cáo lỗi bản đồ có gửi đi đâu không?</summary><p>Không. Báo cáo chỉ lưu trong điện thoại. Bạn tự xuất file khi muốn, rồi mở Waze Map Editor để sửa bản đồ.</p></details>
-        <details><summary>Có được xem video khi xe đang chạy không?</summary><p>Chỉ xem khi xe dừng. Khi lái, hãy để video chạy tiếng hoặc dùng bản đồ; người lái luôn chịu trách nhiệm quan sát đường.</p></details>
+        <div>
+          <details><summary>Xe của tôi có dùng được không?</summary><p>Xe có Android Auto và điện thoại chạy Android 10 trở lên là dùng được bạn nhé. Bạn có thể xem trước ảnh trên màn hình giống xe mình ở mục <a href="#man-hinh">Màn hình xe</a>.</p></details>
+          <details><summary>Có phải root máy hay cài đặt phức tạp không?</summary><p>Không đâu. App cài từ Google Play như mọi app khác, không cần root, cũng không cần bật chế độ nhà phát triển.</p></details>
+          <details><summary>Dùng thử bao lâu? Hết hạn thì sao?</summary><p>Được dùng thử <span data-trial>3</span> ngày. Hết hạn thì màn hình xe sẽ báo để bạn mua bản quyền. Nếu hết hạn đúng lúc đang chạy thì app cũng không tắt giữa đường, phải tới lần cắm xe sau mới báo.</p></details>
+          <details><summary>Số liệu trên bong bóng lấy từ đâu?</summary><p>Từ Waze Mod chạy trên điện thoại của bạn: giới hạn, tốc độ, camera, cảnh báo, chỗ rẽ và làn đường. App không tự đo tốc độ bằng GPS, nên số liệu luôn khớp với Waze.</p></details>
+          <details><summary>Không có Waze Mod thì sao?</summary><p>Bạn vẫn xem YouTube và trang web bình thường. Bong bóng sẽ nhắc mở Waze Mod; nếu không dùng thì bạn tắt bong bóng đi cũng được.</p></details>
+          <details><summary>Có bị quảng cáo YouTube không?</summary><p>App mở YouTube giống như trên trình duyệt và không chặn quảng cáo. Bạn đăng nhập tài khoản có YouTube Premium là không còn quảng cáo.</p></details>
+        </div>
+        <div>
+          <details><summary>Chuyển sang Google Maps thì video có tắt không?</summary><p>Không tắt đâu. Video vẫn phát tiếng, bạn quay lại DriveTV là thấy hình ngay.</p></details>
+          <details><summary>Khoá điện thoại có chạy không?</summary><p>Có. Bạn cứ khoá màn hình điện thoại cho đỡ nóng máy, video và bong bóng trên xe vẫn chạy bình thường.</p></details>
+          <details><summary>Đổi điện thoại mới thì sao?</summary><p>Bạn nhắn mình gỡ máy cũ ra khỏi bản quyền, rồi đăng nhập cùng tài khoản Google trên máy mới là dùng tiếp được.</p></details>
+          <details><summary>Báo bản đồ sai có gửi đi đâu không?</summary><p>Không. Báo cáo chỉ lưu trong điện thoại của bạn. Khi cần thì bạn tự xuất file để gửi người sửa bản đồ Waze, hoặc tự sửa trên Waze Map Editor.</p></details>
+          <details><summary>Xe đang chạy có xem video được không?</summary><p>Bạn chỉ nên xem khi xe đã dừng. Lúc đang lái thì để video phát tiếng hoặc mở bản đồ, và tập trung quan sát đường nhé. An toàn là trên hết.</p></details>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="dash cta-band gutter">
+</div>
+<div class="page" data-page="carcast" id="carcast" hidden>
+  <section class="block gutter first">
     <div class="wrap">
-      <div>
-        <h2>Lên xe với NTV DriveTV</h2>
-        <p>Trả một lần <span data-price>200.000đ</span>, cài qua Google Play.</p>
+      <div class="cc-hero box">
+        <div class="hero-copy">
+          <span class="tag">Miễn phí · cho máy đã root</span>
+          <h1>NTV CarCast: dùng app điện thoại ngay trên màn hình xe</h1>
+          <p class="lede">Nếu điện thoại của bạn đã root, NTV CarCast cho bạn mở Google Maps, Vietmap, Waze, trình duyệt, NewPipe… ngay trên màn hình Android Auto, chạm, kéo, zoom hai ngón như dùng trên điện thoại. App hoàn toàn miễn phí.</p>
+          <div class="actions">
+            <a class="btn dark" href="https://ntv-carcast.github.io/" target="_blank" rel="noopener">Tải NTV CarCast <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+            <a class="btn light" href="https://ntv-carcast.github.io/guide.html" target="_blank" rel="noopener">Xem hướng dẫn cài</a>
+          </div>
+          <p class="small">Android 10 trở lên · cần root (Magisk, KernelSU hoặc APatch) và LSPosed</p>
+        </div>
+        <div class="dark cc-shot"><img src="img/carcast-car-fullscreen.jpg" width="1280" height="720" loading="lazy" alt="NTV CarCast trên màn hình xe: app điện thoại chiếm hết chiều ngang, dock Android Auto vẫn giữ."></div>
       </div>
-      <a class="btn primary" href="#cach-mua">Mua ngay</a>
     </div>
-  </div>
+  </section>
+
+  <section class="block gutter">
+    <div class="wrap">
+      <div class="head"><h2>NTV CarCast làm được gì</h2><p>Dock và bảng bên phải của Android Auto vẫn giữ nguyên, NTV CarCast chạy trong vùng ứng dụng như một app bình thường.</p></div>
+      <div class="cc-grid">
+        <div class="req box"><b>Mọi app trên màn hình xe</b><p>Google Maps, Vietmap, Waze, trình duyệt, NewPipe… chạm, kéo, zoom hai ngón y như trên điện thoại.</p></div>
+        <div class="req box"><b>Chia màn hình</b><p>Một app kèm cửa sổ nổi, chia đôi hoặc chia ba. Kéo để chỉnh tỉ lệ, đổi chỗ hai app mà không bị mất trạng thái.</p></div>
+        <div class="req box"><b>Tắt màn hình vẫn chạy</b><p>Khoá điện thoại thì hình và cảm ứng trên xe vẫn hoạt động, máy mát hơn và đỡ tốn pin (Android 12 trở lên).</p></div>
+        <div class="req box"><b>Toàn màn hình xe</b><p>Với màn hình dài, bạn có thể ẩn bảng bên phải của Android Auto để app chiếm hết chiều ngang.</p></div>
+        <div class="req box"><b>Tự mở, tự báo bản mới</b><p>Cắm cáp là app tự lên màn hình xe. Có bản mới thì app báo ngay trên điện thoại và trên xe.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block gutter">
+    <div class="wrap">
+      <div class="head"><h2>Ảnh chụp trên màn hình xe</h2></div>
+      <div class="cc-gallery">
+        <figure class="box"><img src="img/carcast-car-split-2.jpg" width="1280" height="720" loading="lazy" alt="Chia đôi: video bên trái, Google Maps bên phải."><figcaption>Chia đôi: video và Google Maps</figcaption></figure>
+        <figure class="box"><img src="img/carcast-car-split-3.jpg" width="1280" height="720" loading="lazy" alt="Chia ba: video và hai app dẫn đường."><figcaption>Chia ba: video và hai app dẫn đường</figcaption></figure>
+        <figure class="box"><img src="img/carcast-car-popup.jpg" width="1280" height="720" loading="lazy" alt="Video với Google Maps trong cửa sổ nổi."><figcaption>Video kèm Google Maps trong cửa sổ nổi</figcaption></figure>
+        <figure class="box"><img src="img/carcast-car-fullscreen.jpg" width="1280" height="720" loading="lazy" alt="Toàn màn hình: app chiếm hết chiều ngang, dock vẫn giữ."><figcaption>Toàn màn hình, dock vẫn giữ</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block gutter">
+    <div class="wrap">
+      <div class="head"><h2>Nên chọn app nào?</h2><p>Hai app dành cho hai nhu cầu khác nhau, bạn chọn theo máy của mình nhé.</p></div>
+      <div class="compare box">
+        <div class="row head-row-c"><span></span><b>NTV DriveTV</b><b>NTV CarCast</b></div>
+        <div class="row"><span>Root máy</span><span>Không cần</span><span>Cần root và LSPosed</span></div>
+        <div class="row"><span>Mở được gì trên xe</span><span>YouTube và trang web</span><span>Gần như mọi app điện thoại</span></div>
+        <div class="row"><span>Bong bóng tốc độ từ Waze Mod</span><span>Có</span><span>Không</span></div>
+        <div class="row"><span>Chia đôi, chia ba màn hình</span><span>Không</span><span>Có</span></div>
+        <div class="row"><span>Cài đặt</span><span>Từ Google Play</span><span>Tải APK, bật module LSPosed</span></div>
+        <div class="row"><span>Giá</span><span><span data-price>200.000đ</span>, dùng thử <span data-trial>3</span> ngày</span><span>Miễn phí</span></div>
+      </div>
+      <p class="fineprint">NTV CarCast can thiệp vào Android Auto nên có thể vi phạm điều khoản của Google; bạn tự cân nhắc rủi ro khi dùng. Không thao tác trên màn hình khi đang lái xe. Gặp lỗi hay muốn góp ý, bạn gửi qua <a href="https://forms.gle/XQfBQJuNHZzoBCHL6" target="_blank" rel="noopener">form góp ý</a> nhé.</p>
+    </div>
+  </section>
+</div>
+  <section class="gutter" id="cta">
+    <div class="wrap">
+      <div class="cta box">
+        <svg class="spark s1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></svg>
+        <svg class="spark s2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></svg>
+        <span class="icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24,0.5a23.5,23.5 0,1 1,0 47.0a23.5,23.5 0,1 1,0 -47.0z" fill="#FFFFFF"/><path d="M24,2.5a21.5,21.5 0,1 1,0 43.0a21.5,21.5 0,1 1,0 -43.0z" fill="#FF8A00"/><path d="M14,16h13a3,3 0,0 1,3,3v6a3,3 0,0 1,-3,3h-13a3,3 0,0 1,-3,-3v-6a3,3 0,0 1,3,-3z" fill="#FFFFFF"/><path d="M30,18.5L37,16V28L30,25.5z" fill="#FFFFFF"/><path d="M16.5,19.8a2.2,2.2 0,1 1,0 4.4a2.2,2.2 0,1 1,0 -4.4z" fill="#FF8A00"/><path d="M20.5,28V35" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5,34.5h8a1.5,1.5 0,0 1,1.5,1.5v0a1.5,1.5 0,0 1,-1.5,1.5h-8a1.5,1.5 0,0 1,-1.5,-1.5v-0a1.5,1.5 0,0 1,1.5,-1.5z" fill="#FFFFFF"/></svg></span>
+        <span class="tag">Dùng thử miễn phí</span>
+        <h2>Cài thử miễn phí <span data-trial>3</span> ngày</h2>
+        <p>Bạn cứ dùng thử trước. Thấy hợp thì mua bản quyền <span data-price>200.000đ</span>, chỉ trả một lần.</p>
+        <a class="btn dark" href="#cach-mua">Nhắn mình để cài app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="checks"><span>Không cần root</span><span>Cài từ Google Play</span><span>Khoá máy vẫn chạy</span></div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="gutter">
   <div class="wrap">
-    <p><b>NTV DriveTV</b> · bản 0.6.2</p>
+    <p><b>NTV DriveTV</b> · bản 1.0.0</p>
     <p>Chỉ xem video khi xe dừng. Tuân thủ luật giao thông và luôn quan sát đường.</p>
     <p>NTV DriveTV không liên quan và không được Google, YouTube, Waze hay nhóm phát triển Waze Mod bảo trợ. Các tên này chỉ dùng để mô tả khả năng tương thích.</p>
-    <p>Video trong ảnh minh hoạ: Big Buck Bunny, © Blender Foundation, giấy phép CC BY 3.0.</p>
+    <p>Phim trong ảnh minh hoạ: Big Buck Bunny, © Blender Foundation, giấy phép CC BY 3.0. Ảnh màn hình chụp trên bộ giả lập màn hình xe, số liệu tốc độ là cảnh mẫu.</p>
   </div>
 </footer>
 
@@ -448,13 +689,52 @@
   (function () {
     var c = window.DRIVETV || {};
     if (c.price) document.querySelectorAll("[data-price]").forEach(function (el) { el.textContent = c.price; });
+    if (c.trialDays) document.querySelectorAll("[data-trial]").forEach(function (el) { el.textContent = c.trialDays; });
+
+    // Ảnh màn xe: bong bóng dọc / ngang
+    var segs = document.querySelectorAll("[data-shot]");
+    segs.forEach(function (b) {
+      b.addEventListener("click", function () {
+        segs.forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+        document.querySelectorAll("[data-shot-img]").forEach(function (i) { i.hidden = i.getAttribute("data-shot-img") !== b.getAttribute("data-shot"); });
+      });
+    });
+
+    // Trang con: bấm menu thì đổi trang (không cuộn cả trang dài). Link tới id nằm trong trang nào thì mở trang đó.
+    var pages = document.querySelectorAll("[data-page]");
+    var navs = document.querySelectorAll("[data-nav]");
+    var cta = document.getElementById("cta");
+    function route() {
+      var id = decodeURIComponent(location.hash.slice(1)) || "trang-chu";
+      var target = document.getElementById(id);
+      var page = target && target.closest("[data-page]");
+      if (!page) { page = document.querySelector('[data-page="trang-chu"]'); target = null; }
+      var name = page.getAttribute("data-page");
+      pages.forEach(function (p) { p.hidden = p !== page; });
+      navs.forEach(function (a) { if (a.getAttribute("data-nav") === name) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+      if (cta) cta.hidden = name === "bang-gia" || name === "carcast";
+      if (target && target !== page && !target.classList.contains("first")) target.scrollIntoView({ block: "start" });
+      else window.scrollTo(0, 0);
+    }
+    window.addEventListener("hashchange", route);
+    route();
+
+    // Chọn loại màn hình xe
+    var tabs = document.querySelectorAll("[data-tab]");
+    tabs.forEach(function (t) {
+      t.addEventListener("click", function () {
+        tabs.forEach(function (o) { o.setAttribute("aria-selected", o === t ? "true" : "false"); });
+        document.querySelectorAll("[data-panel]").forEach(function (p) { p.hidden = p.getAttribute("data-panel") !== t.getAttribute("data-tab"); });
+      });
+    });
 
     var terms = document.getElementById("terms");
     if (c.terms && c.terms.length) {
-      c.terms.forEach(function (t) { var p = document.createElement("span"); p.textContent = t; terms.appendChild(p); });
+      var list = terms.querySelector("ul");
+      c.terms.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; list.appendChild(li); });
       terms.hidden = false;
     }
-    if (c.bank) document.getElementById("bank-line").textContent = c.bank + ". Ghi email của bạn trong nội dung chuyển khoản.";
+    if (c.bank) document.getElementById("bank-line").textContent = c.bank + ". Nội dung chuyển khoản bạn ghi email của mình giúp mình nhé.";
 
     var box = document.getElementById("contact");
     function add(label, value, href) {
