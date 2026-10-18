@@ -342,6 +342,8 @@
     phone: "0935179050",
     // Thông tin chuyển khoản (hiện ở bước 3). Ví dụ: "Vietcombank · 0123456789 · NGUYEN VAN A"
     bank: "TPBank · 02038212103 · NGUYEN THI THU THUY",
+    // Mã đo lường Google Analytics 4 (dạng "G-XXXXXXXXXX"). Để trống "" thì không gửi thống kê.
+    ga: "G-N8YDLB8FYR",
   };
 </script>
 
@@ -721,6 +723,29 @@
       });
     });
 
+    // Google Analytics 4: mỗi trang con (#…) tính là một lượt xem trang riêng, đường dẫn /<tên trang>.
+    var gaLast = null;
+    if (c.ga) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("js", new Date());
+      gtag("config", c.ga, { send_page_view: false });
+      var gaJs = document.createElement("script");
+      gaJs.async = true;
+      gaJs.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(c.ga);
+      document.head.appendChild(gaJs);
+    }
+    function trackPage(name) {
+      if (!c.ga || name === gaLast) return;
+      gaLast = name;
+      var nav = document.querySelector('#nav [data-nav="' + name + '"]');
+      var label = nav ? nav.firstChild.textContent.trim() : name;
+      gtag("event", "page_view", {
+        page_title: "NTV DriveTV · " + label,
+        page_location: location.origin + location.pathname.replace(/[^/]*$/, "") + name
+      });
+    }
+
     // Trang con: bấm menu thì đổi trang (không cuộn cả trang dài). Link tới id nằm trong trang nào thì mở trang đó.
     var pages = document.querySelectorAll("[data-page]");
     var navs = document.querySelectorAll("[data-nav]");
@@ -734,6 +759,7 @@
       pages.forEach(function (p) { p.hidden = p !== page; });
       navs.forEach(function (a) { if (a.getAttribute("data-nav") === name) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
       if (cta) cta.hidden = name === "bang-gia" || name === "carcast";
+      trackPage(name);
       if (target && target !== page && !target.classList.contains("first")) target.scrollIntoView({ block: "start" });
       else window.scrollTo(0, 0);
     }
