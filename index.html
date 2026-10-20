@@ -326,8 +326,10 @@
 <script>
   window.DRIVETV = {
     price: "200.000đ",
-    // Số ngày dùng thử (khớp cấu hình trên trang quản trị).
+    // Số ngày dùng thử: trang tự lấy từ máy chủ (configUrl, đổi ở trang quản trị → Cấu hình). Số ở đây chỉ hiện khi
+    // chưa lấy được (mất mạng, máy chủ lỗi).
     trialDays: 3,
+    configUrl: "https://asia-southeast1-ntv-drivetv-2026.cloudfunctions.net/publicConfig",
     // Điều khoản của gói (mỗi dòng một ý). Ví dụ: "1 tài khoản Google Play", "Cập nhật miễn phí 6 tháng".
     terms: [
       "Thanh toán 1 lần, xài vĩnh viễn", 
@@ -712,7 +714,13 @@
   (function () {
     var c = window.DRIVETV || {};
     if (c.price) document.querySelectorAll("[data-price]").forEach(function (el) { el.textContent = c.price; });
-    if (c.trialDays) document.querySelectorAll("[data-trial]").forEach(function (el) { el.textContent = c.trialDays; });
+    function setTrial(days) { document.querySelectorAll("[data-trial]").forEach(function (el) { el.textContent = days; }); }
+    if (c.trialDays) setTrial(c.trialDays);
+    if (c.configUrl && window.fetch) {
+      fetch(c.configUrl).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+        if (j && typeof j.trialDays === "number" && j.trialDays > 0) setTrial(j.trialDays);
+      }).catch(function () {});
+    }
 
     // Ảnh màn xe: bong bóng dọc / ngang
     var segs = document.querySelectorAll("[data-shot]");
