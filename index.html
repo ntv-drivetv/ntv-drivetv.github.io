@@ -85,37 +85,13 @@
   nav.links > a { flex: none; padding: 8px 12px; border-radius: 999px; border: 2px solid transparent; }
   nav.links > a[aria-current="page"] { border-color: var(--line); background: var(--card); box-shadow: 3px 3px 0 var(--lift); text-decoration: none; }
   nav.links { padding-top: 9px; margin-top: -9px; }
-  nav.links .cc-link { position: relative; }
-  nav.links .cc-link .tags { position: absolute; top: -8px; right: 2px; display: flex; gap: 2px; pointer-events: none; }
-  nav.links .cc-link small { font: 800 0.55rem/1 var(--head); letter-spacing: 0.04em; background: var(--yellow); color: #201F1B; border-radius: 999px; padding: 2px 5px; }
-  nav.links .cc-link small.root { background: #201F1B; color: #FBF7EE; }
   .buy-top { min-height: 42px; padding: 0 18px; font-size: 0.95rem; flex: none; }
   section.block.first { padding-top: 40px; }
-  .teaser { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 22px 26px; color: var(--ink); text-decoration: none; background: var(--yellow-soft); }
-  .teaser b { font: 700 1.25rem/1.3 var(--head); }
-  .teaser p { color: var(--ink-2); margin-top: 4px; }
-  .teaser .go { font: 800 1.8rem/1 var(--head); }
-  .teaser:hover { box-shadow: 10px 10px 0 var(--yellow); }
-  .cc-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: center; padding: clamp(22px, 4vw, 40px); background: var(--yellow-soft); }
-  .cc-hero h1 { font-size: clamp(2rem, 4vw, 3rem); }
-  .cc-hero .small { font-size: 0.9rem; color: var(--ink-2); }
-  .cc-shot { background: #0B0F14; border-radius: 16px; padding: 8px; border: 2px solid var(--line); }
-  .cc-shot img { display: block; width: 100%; height: auto; border-radius: 10px; }
   .phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
   .phones figure { margin: 0; padding: 12px; display: grid; gap: 12px; align-content: start; }
   .phones img { display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto; border-radius: 22px; border: 2px solid var(--line); }
   .phones figcaption { color: var(--ink-2); font-size: 0.96rem; display: grid; gap: 4px; padding: 0 4px 4px; }
   .phones figcaption b { color: var(--ink); font: 700 1.05rem/1.2 var(--head); }
-  .cc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  .cc-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .cc-gallery figure { margin: 0; padding: 10px; display: grid; gap: 8px; }
-  .cc-gallery img { display: block; width: 100%; height: auto; border-radius: 12px; background: #0B0F14; }
-  .cc-gallery figcaption { font-weight: 700; padding: 0 4px 2px; }
-  .compare { padding: 6px 20px; }
-  .compare .row { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 12px; padding: 12px 0; border-bottom: 2px dashed var(--soft-line); }
-  .compare .row:last-child { border-bottom: 0; }
-  .compare .row > span:first-child { color: var(--ink-2); }
-  .compare .head-row-c b { font: 700 1.05rem/1.2 var(--head); }
   nav.links > a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 0.98rem; }
   nav.links > a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
   .pillbar { display: flex; align-items: center; gap: 6px; padding: 5px; border: 2px solid var(--line); border-radius: 999px; background: var(--card); box-shadow: 4px 4px 0 var(--lift); }
@@ -281,9 +257,6 @@
     header.top.open nav.links { display: flex; }
     nav.links > a { font-size: 1.05rem; padding: 12px 16px; border: 2px solid var(--soft-line); border-radius: 14px; background: var(--card); }
     nav.links > a[aria-current="page"] { border-color: var(--line); }
-    nav.links .cc-link { display: flex; align-items: center; gap: 8px; }
-    nav.links .cc-link .tags { position: static; }
-    nav.links .cc-link small { font-size: 0.68rem; padding: 3px 7px; }
     body.menu-open { overflow: hidden; }
     header.top.open { max-height: 100vh; overflow-y: auto; }
   }
@@ -294,7 +267,7 @@
   }
   @media (max-width: 980px) {
     .hero-box .spark.s2 { display: none; }
-    .hero-box, .split, .split.flip, .split.even, .pricing, .head-row, .cc-hero { grid-template-columns: minmax(0, 1fr); }
+    .hero-box, .split, .split.flip, .split.even, .pricing, .head-row { grid-template-columns: minmax(0, 1fr); }
     .split.flip .visual { order: 0; }
     .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .faq { grid-template-columns: minmax(0, 1fr); }
@@ -302,14 +275,7 @@
     .panel.three:not(.tall):not(.wide) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
-    .teaser { grid-template-columns: minmax(0, 1fr); }
-    .teaser .go { display: none; }
-    .cc-gallery, .compare .row { grid-template-columns: minmax(0, 1fr); }
     .phones { grid-template-columns: minmax(0, 1fr); }
-    .compare .row { gap: 2px; }
-    .compare .head-row-c { display: none; }
-    .compare .row > span:nth-child(2)::before { content: "DriveTV: "; font-weight: 700; }
-    .compare .row > span:nth-child(3)::before { content: "CarCast: "; font-weight: 700; }
     .cards, .panel { grid-template-columns: minmax(0, 1fr); }
     .panel.tall, .panel.three.tall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .panel.three:not(.tall):not(.wide) { grid-template-columns: minmax(0, 1fr); }
@@ -322,7 +288,6 @@
     .brand { font-size: 1.12rem; }
     .brand img { width: 32px; height: 32px; }
     .hero h1 { font-size: clamp(1.9rem, 8.6vw, 2.4rem); }
-    .cc-hero h1 { font-size: clamp(1.7rem, 7.6vw, 2.2rem); }
     .hero-box .spark { display: none; }
   }
   @media (prefers-reduced-motion: reduce) { .btn { transition: none; } html { scroll-behavior: auto; } }
@@ -370,7 +335,6 @@
       <a href="#man-hinh" data-nav="man-hinh">Màn hình xe</a>
       <a href="#bang-gia" data-nav="bang-gia">Bảng giá</a>
       <a href="#hoi-dap" data-nav="hoi-dap">Hỏi đáp</a>
-      <a href="#carcast" data-nav="carcast" class="cc-link" title="App miễn phí cho điện thoại đã root">NTV CarCast<span class="tags" aria-label="cho máy root, miễn phí"><small class="root">ROOT</small><small>FREE</small></span></a>
       <a class="btn dark nav-buy" href="#cach-mua">Mua ngay</a>
     </nav>
     <a class="btn dark buy-top" href="#cach-mua">Mua ngay</a>
@@ -460,15 +424,6 @@
     </div>
   </section>
 
-  <section class="block gutter">
-    <div class="wrap">
-      <a class="teaser box" href="#carcast">
-        <span class="tag">Miễn phí</span>
-        <div><b>Máy bạn đã root? Thử NTV CarCast</b><p>App miễn phí của mình cho máy đã root: mở gần như mọi app điện thoại trên màn hình xe, chia đôi, chia ba màn hình.</p></div>
-        <span class="go" aria-hidden="true">→</span>
-      </a>
-    </div>
-  </section>
 </div>
 <div class="page" data-page="tinh-nang" id="tinh-nang" hidden>
   <section class="block gutter first">
@@ -672,66 +627,6 @@
   </section>
 
 </div>
-<div class="page" data-page="carcast" id="carcast" hidden>
-  <section class="block gutter first">
-    <div class="wrap">
-      <div class="cc-hero box">
-        <div class="hero-copy">
-          <span class="tag">Miễn phí · cho máy đã root</span>
-          <h1>NTV CarCast: dùng app điện thoại ngay trên màn hình xe</h1>
-          <p class="lede">Nếu điện thoại của bạn đã root, NTV CarCast cho bạn mở Google Maps, Vietmap, Waze, trình duyệt, NewPipe… ngay trên màn hình Android Auto, chạm, kéo, zoom hai ngón như dùng trên điện thoại. App hoàn toàn miễn phí.</p>
-          <div class="actions">
-            <a class="btn dark" href="https://ntv-carcast.github.io/" target="_blank" rel="noopener">Tải NTV CarCast <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
-            <a class="btn light" href="https://ntv-carcast.github.io/guide.html" target="_blank" rel="noopener">Xem hướng dẫn cài</a>
-          </div>
-          <p class="small">Android 10 trở lên · cần root (Magisk, KernelSU hoặc APatch) và LSPosed</p>
-        </div>
-        <div class="dark cc-shot"><img src="img/carcast-car-fullscreen.jpg" width="1280" height="720" loading="lazy" alt="NTV CarCast trên màn hình xe: app điện thoại chiếm hết chiều ngang, dock Android Auto vẫn giữ."></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block gutter">
-    <div class="wrap">
-      <div class="head"><h2>NTV CarCast làm được gì</h2><p>Dock và bảng bên phải của Android Auto vẫn giữ nguyên, NTV CarCast chạy trong vùng ứng dụng như một app bình thường.</p></div>
-      <div class="cc-grid">
-        <div class="req box"><b>Mọi app trên màn hình xe</b><p>Google Maps, Vietmap, Waze, trình duyệt, NewPipe… chạm, kéo, zoom hai ngón y như trên điện thoại.</p></div>
-        <div class="req box"><b>Chia màn hình</b><p>Một app kèm cửa sổ nổi, chia đôi hoặc chia ba. Kéo để chỉnh tỉ lệ, đổi chỗ hai app mà không bị mất trạng thái.</p></div>
-        <div class="req box"><b>Tắt màn hình vẫn chạy</b><p>Khoá điện thoại thì hình và cảm ứng trên xe vẫn hoạt động, máy mát hơn và đỡ tốn pin (Android 12 trở lên).</p></div>
-        <div class="req box"><b>Toàn màn hình xe</b><p>Với màn hình dài, bạn có thể ẩn bảng bên phải của Android Auto để app chiếm hết chiều ngang.</p></div>
-        <div class="req box"><b>Tự mở, tự báo bản mới</b><p>Cắm cáp là app tự lên màn hình xe. Có bản mới thì app báo ngay trên điện thoại và trên xe.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block gutter">
-    <div class="wrap">
-      <div class="head"><h2>Ảnh chụp trên màn hình xe</h2></div>
-      <div class="cc-gallery">
-        <figure class="box"><img src="img/carcast-car-split-2.jpg" width="1280" height="720" loading="lazy" alt="Chia đôi: video bên trái, Google Maps bên phải."><figcaption>Chia đôi: video và Google Maps</figcaption></figure>
-        <figure class="box"><img src="img/carcast-car-split-3.jpg" width="1280" height="720" loading="lazy" alt="Chia ba: video và hai app dẫn đường."><figcaption>Chia ba: video và hai app dẫn đường</figcaption></figure>
-        <figure class="box"><img src="img/carcast-car-popup.jpg" width="1280" height="720" loading="lazy" alt="Video với Google Maps trong cửa sổ nổi."><figcaption>Video kèm Google Maps trong cửa sổ nổi</figcaption></figure>
-        <figure class="box"><img src="img/carcast-car-fullscreen.jpg" width="1280" height="720" loading="lazy" alt="Toàn màn hình: app chiếm hết chiều ngang, dock vẫn giữ."><figcaption>Toàn màn hình, dock vẫn giữ</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="block gutter">
-    <div class="wrap">
-      <div class="head"><h2>Nên chọn app nào?</h2><p>Hai app dành cho hai nhu cầu khác nhau, bạn chọn theo máy của mình nhé.</p></div>
-      <div class="compare box">
-        <div class="row head-row-c"><span></span><b>NTV DriveTV</b><b>NTV CarCast</b></div>
-        <div class="row"><span>Root máy</span><span>Không cần</span><span>Cần root và LSPosed</span></div>
-        <div class="row"><span>Mở được gì trên xe</span><span>YouTube và trang web</span><span>Gần như mọi app điện thoại</span></div>
-        <div class="row"><span>Bong bóng tốc độ từ Waze Mod / Vietmap Live</span><span>Có</span><span>Không</span></div>
-        <div class="row"><span>Chia đôi, chia ba màn hình</span><span>Không</span><span>Có</span></div>
-        <div class="row"><span>Cài đặt</span><span>Từ Google Play</span><span>Tải APK, bật module LSPosed</span></div>
-        <div class="row"><span>Giá</span><span><span data-price>200.000đ</span>, dùng thử <span data-trial>3</span> ngày</span><span>Miễn phí</span></div>
-      </div>
-      <p class="fineprint">NTV CarCast can thiệp vào Android Auto nên có thể vi phạm điều khoản của Google; bạn tự cân nhắc rủi ro khi dùng. Không thao tác trên màn hình khi đang lái xe. Gặp lỗi hay muốn góp ý, bạn gửi qua <a href="https://forms.gle/XQfBQJuNHZzoBCHL6" target="_blank" rel="noopener">form góp ý</a> nhé.</p>
-    </div>
-  </section>
-</div>
   <section class="gutter" id="cta">
     <div class="wrap">
       <div class="cta box">
@@ -813,7 +708,7 @@
       var name = page.getAttribute("data-page");
       pages.forEach(function (p) { p.hidden = p !== page; });
       navs.forEach(function (a) { if (a.getAttribute("data-nav") === name) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
-      if (cta) cta.hidden = name === "bang-gia" || name === "carcast";
+      if (cta) cta.hidden = name === "bang-gia";
       trackPage(name);
       if (target && target !== page && !target.classList.contains("first")) target.scrollIntoView({ block: "start" });
       else window.scrollTo(0, 0);
