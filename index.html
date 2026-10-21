@@ -6,7 +6,7 @@
 <title>NTV DriveTV</title>
 <meta name="description" content="Xem YouTube trên màn hình Android Auto, góc màn hình có bong bóng báo giới hạn, tốc độ, chỗ rẽ, làn đường và camera lấy từ Waze Mod. Không cần root, dùng thử miễn phí.">
 <meta property="og:title" content="NTV DriveTV">
-<meta property="og:description" content="YouTube trên màn hình xe mà tốc độ, camera, chỗ rẽ vẫn hiện ngay đó. Không cần root.">
+<meta property="og:description" content="YouTube trên màn hình xe mà tốc độ, chỗ rẽ, làn đường, đèn giao thông, đổi tốc độ vẫn hiện ngay đó. Không cần root.">
 <meta property="og:image" content="img/og.jpg">
 <link rel="icon" href="img/logo.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
@@ -203,6 +203,15 @@
   .panel img { display: block; width: 100%; height: auto; background: #0B0F14; border-radius: 14px; padding: 6px; }
   .panel figcaption { font-weight: 700; display: flex; align-items: center; gap: 8px; }
   .panel figcaption::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--yellow); border: 2px solid var(--line); }
+  .panel.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .panel.three.wide { grid-template-columns: minmax(0, 1fr); }
+  .panel.three.tall { grid-template-columns: repeat(3, minmax(0, 260px)); justify-content: center; }
+  .alerts4 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .alerts4 li { background: var(--paper); border: 2px solid var(--line); border-radius: 14px; padding: 10px 14px; font-size: 0.92rem; color: var(--ink-2); }
+  .alerts4 b { display: block; color: var(--ink); font: 700 1rem/1.3 var(--head); }
+  .promo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-items: start; }
+  .promo a { display: grid; gap: 10px; padding: 12px; text-decoration: none; color: var(--ink); font-weight: 700; }
+  .promo img { display: block; width: 100%; height: auto; border-radius: 14px; }
   .panel .note { grid-column: 1 / -1; color: var(--ink-2); padding-top: 4px; border-top: 2px dashed var(--soft-line); }
   .fineprint { font-size: 0.88rem; color: var(--ink-2); margin-top: 16px; }
 
@@ -290,6 +299,7 @@
     .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .faq { grid-template-columns: minmax(0, 1fr); }
     .cta .icon { display: none; }
+    .panel.three:not(.tall):not(.wide) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
     .teaser { grid-template-columns: minmax(0, 1fr); }
@@ -301,7 +311,9 @@
     .compare .row > span:nth-child(2)::before { content: "DriveTV: "; font-weight: 700; }
     .compare .row > span:nth-child(3)::before { content: "CarCast: "; font-weight: 700; }
     .cards, .panel { grid-template-columns: minmax(0, 1fr); }
-    .panel.tall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .panel.tall, .panel.three.tall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .panel.three:not(.tall):not(.wide) { grid-template-columns: minmax(0, 1fr); }
+    .promo, .alerts4 { grid-template-columns: minmax(0, 1fr); }
     .box { box-shadow: 6px 6px 0 var(--lift); }
     .hero { padding-top: 22px; }
     section.block { padding-top: 64px; }
@@ -375,8 +387,8 @@
         <svg class="spark s2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></svg>
         <div class="hero-copy">
           <span class="tag">Cho xe có Android Auto</span>
-          <h1>Xem YouTube trên màn hình xe mà vẫn biết tốc độ, camera phía trước</h1>
-          <p class="lede">NTV DriveTV giúp bạn mở YouTube ngay trên màn hình Android Auto của xe. Ở góc màn hình luôn có một bong bóng nhỏ cho bạn biết <span class="mark">đoạn đường cho chạy tối đa bao nhiêu</span>, <span class="mark">xe đang chạy bao nhiêu</span>, <span class="mark">sắp rẽ ở đâu</span> và <span class="mark">phía trước có camera không</span>. Số liệu lấy từ Waze Mod trên điện thoại, nên Waze báo gì thì bong bóng hiện đúng như vậy.</p>
+          <h1>Xem YouTube trên màn hình xe mà vẫn biết tốc độ, lối rẽ, đèn phía trước</h1>
+          <p class="lede">NTV DriveTV giúp bạn mở YouTube ngay trên màn hình Android Auto của xe. Ở góc màn hình luôn có một bong bóng nhỏ cho bạn biết <span class="mark">đoạn đường cho chạy tối đa bao nhiêu</span>, <span class="mark">xe đang chạy bao nhiêu</span>, <span class="mark">sắp rẽ ở đâu, đi làn nào</span> và <span class="mark">phía trước có đèn giao thông, camera hay đổi tốc độ không</span>. Số liệu lấy từ Waze Mod trên điện thoại, nên Waze báo gì thì bong bóng hiện đúng như vậy.</p>
           <div class="actions">
             <a class="btn dark" href="#cach-mua">Dùng thử miễn phí <span data-trial>3</span> ngày <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <a class="btn light" href="#man-hinh">Xem trên màn hình giống xe bạn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
@@ -393,10 +405,10 @@
           </div>
         </div>
         <div class="shot">
-          <img data-shot-img="doc" src="img/hero-man-dai.jpg" width="1600" height="600" alt="Màn hình xe dài đang chiếu phim hoạt hình toàn màn hình, góc phải là bong bóng dọc: biển 60, đang chạy 52 km/h, rẽ phải 250 m vào Nguyễn Văn Linh, làn phải được tô, camera 400 m, đổi lên 80 sau 700 m, nút Báo cáo. Bên phải là Google Maps.">
-          <img data-shot-img="ngang" src="img/mh-man-dai-video.jpg" width="1600" height="600" loading="lazy" alt="Màn hình xe dài chiếu phim hoạt hình, phía trên là bong bóng ngang: biển 60, 52 km/h, rẽ phải 250 m, làn đường, camera 400 m, đổi lên 80 sau 700 m." hidden>
+          <img data-shot-img="doc" src="img/hero-man-dai.jpg" width="1600" height="600" alt="Màn hình xe dài đang chiếu phim hoạt hình toàn màn hình, góc phải là bong bóng dọc: biển 60, đang chạy 52 km/h, rẽ phải 250 m vào Nguyễn Văn Linh, làn phải được tô, đèn giao thông 180 m, đổi lên 80 sau 700 m, nút Báo cáo. Bên phải là Google Maps.">
+          <img data-shot-img="ngang" src="img/mh-man-dai-video-ngang.jpg" width="1600" height="600" loading="lazy" alt="Màn hình xe dài chiếu phim hoạt hình, giữa mép trên là bong bóng ngang: biển 60, 52 km/h, rẽ phải 250 m, làn đường, đèn giao thông 180 m, đổi lên 80 sau 700 m, nút Báo cáo." hidden>
         </div>
-        <div class="legend"><span><i>60</i> đường cho chạy tối đa</span><span><i>52</i> xe đang chạy</span><span><i>↱ 250 m</i> chỗ rẽ sắp tới, kèm làn nên đi</span><span><i>📷 400 m</i> camera phía trước</span><span><i>80 · 700 m</i> sắp đổi tốc độ</span></div>
+        <div class="legend"><span><i>60</i> đường cho chạy tối đa</span><span><i>52</i> xe đang chạy</span><span><i>↱ 250 m</i> lối rẽ sắp tới</span><span><i>⇈ làn</i> làn nên đi được tô sáng</span><span><i>🚦 180 m</i> đèn giao thông phía trước</span><span><i>80 · 700 m</i> sắp đổi tốc độ</span></div>
       </div>
     </div>
   </section>
@@ -422,9 +434,9 @@
         </article>
         <article class="fcard c-orange">
           <span class="pill">Cảnh báo</span>
-          <h3>Camera, chỗ rẽ, làn đường</h3>
-          <p>Còn khoảng 500 m tới camera là có thanh đếm lùi để bạn kịp giảm tốc. Gần tới ngã rẽ thì hiện mũi tên, tên đường và làn nên đi. Phía trước sắp đổi tốc độ hay đang kẹt xe cũng được báo trước.</p>
-          <div class="art"><span class="chip l">400 m</span><span class="chip r">↱ 250 m</span><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24,0.5a23.5,23.5 0,1 1,0 47.0a23.5,23.5 0,1 1,0 -47.0z" fill="#FFFFFF"/><path d="M24,2.5a21.5,21.5 0,1 1,0 43.0a21.5,21.5 0,1 1,0 -43.0z" fill="#FF8A00"/><path d="M14,16h13a3,3 0,0 1,3,3v6a3,3 0,0 1,-3,3h-13a3,3 0,0 1,-3,-3v-6a3,3 0,0 1,3,-3z" fill="#FFFFFF"/><path d="M30,18.5L37,16V28L30,25.5z" fill="#FFFFFF"/><path d="M16.5,19.8a2.2,2.2 0,1 1,0 4.4a2.2,2.2 0,1 1,0 -4.4z" fill="#FF8A00"/><path d="M20.5,28V35" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5,34.5h8a1.5,1.5 0,0 1,1.5,1.5v0a1.5,1.5 0,0 1,-1.5,1.5h-8a1.5,1.5 0,0 1,-1.5,-1.5v-0a1.5,1.5 0,0 1,1.5,-1.5z" fill="#FFFFFF"/></svg></div>
+          <h3>Lối rẽ, làn đường, đèn giao thông, đổi tốc độ</h3>
+          <p>Gần tới ngã rẽ thì hiện mũi tên, tên đường và làn nên đi. Còn khoảng 500 m tới đèn giao thông hay camera là có thanh đếm lùi để bạn kịp giảm tốc. Phía trước sắp đổi tốc độ hay đang kẹt xe cũng được báo trước.</p>
+          <div class="art"><span class="chip l">🚦 180 m</span><span class="chip r">↱ 250 m</span><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24,0.5a23.5,23.5 0,1 1,0 47.0a23.5,23.5 0,1 1,0 -47.0z" fill="#FFFFFF"/><path d="M24,2.5a21.5,21.5 0,1 1,0 43.0a21.5,21.5 0,1 1,0 -43.0z" fill="#FF8A00"/><path d="M14,16h13a3,3 0,0 1,3,3v6a3,3 0,0 1,-3,3h-13a3,3 0,0 1,-3,-3v-6a3,3 0,0 1,3,-3z" fill="#FFFFFF"/><path d="M30,18.5L37,16V28L30,25.5z" fill="#FFFFFF"/><path d="M16.5,19.8a2.2,2.2 0,1 1,0 4.4a2.2,2.2 0,1 1,0 -4.4z" fill="#FF8A00"/><path d="M20.5,28V35" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5,34.5h8a1.5,1.5 0,0 1,1.5,1.5v0a1.5,1.5 0,0 1,-1.5,1.5h-8a1.5,1.5 0,0 1,-1.5,-1.5v-0a1.5,1.5 0,0 1,1.5,-1.5z" fill="#FFFFFF"/></svg></div>
         </article>
         <article class="fcard c-green">
           <span class="pill">Cạnh bản đồ</span>
@@ -461,19 +473,26 @@
 <div class="page" data-page="tinh-nang" id="tinh-nang" hidden>
   <section class="block gutter first">
     <div class="wrap">
-      <div class="head"><h2>Bong bóng tốc độ cho bạn biết những gì</h2><p>Bên trái là hai con số bạn cần nhất: đoạn đường cho chạy tối đa bao nhiêu và xe đang chạy bao nhiêu. Bên phải là những gì sắp tới, cái gần nhất nằm trên cùng: chỗ rẽ và làn nên đi, camera, chỗ đổi tốc độ, đoạn kẹt xe. Bong bóng có nằm đè lên video thì bạn vẫn chạm vào video như bình thường.</p></div>
+      <div class="head"><h2>Bong bóng tốc độ cho bạn biết những gì</h2><p>Bên trái là hai con số bạn cần nhất: đoạn đường cho chạy tối đa bao nhiêu và xe đang chạy bao nhiêu. Bên phải là những gì sắp tới, cái gần nhất nằm trên cùng: lối rẽ và làn nên đi, đèn giao thông, camera, chỗ đổi tốc độ, đoạn kẹt xe. Bong bóng có nằm đè lên video thì bạn vẫn chạm vào video như bình thường.</p></div>
       <div class="visual box solo">
-        <img src="img/hero-v.png" width="1206" height="874" loading="lazy" alt="Bong bóng dọc: biển 60, đang chạy 48 km/h; rẽ phải 250 m vào Võ Nguyên Giáp; bốn làn, làn phải được tô; camera 420 m; biển 60 sau 1,9 km; kẹt xe 3,1 km thêm 5 phút; nút Báo cáo.">
-        <img src="img/hero-h-over.png" width="2205" height="172" loading="lazy" alt="Bong bóng ngang lúc chạy quá tốc độ: khối tốc độ nền đỏ, 72 km/h trong khi giới hạn 60.">
-        <p class="note">Trên là bong bóng dọc lúc sắp tới ngã rẽ. Dưới là bong bóng ngang lúc lỡ chạy quá tốc độ, phần tốc độ chuyển sang đỏ.</p>
+        <img src="img/hero-v.png" width="794" height="655" loading="lazy" style="max-width:520px;justify-self:center" alt="Bong bóng dọc: biển 60, đang chạy 48 km/h; rẽ phải 250 m vào Võ Nguyên Giáp; bốn làn, làn phải được tô; đèn giao thông 180 m có thanh đếm lùi; lên 80 sau 700 m; camera 1,2 km; nút Báo cáo.">
+        <img src="img/hero-h.png" width="2041" height="172" loading="lazy" alt="Bong bóng ngang cùng lúc: biển 60, 48 km/h, rẽ phải 250 m, bốn làn, đèn giao thông 180 m, lên 80 sau 700 m, camera 1,2 km, nút Báo cáo.">
+        <img src="img/hero-h-over.png" width="2041" height="172" loading="lazy" alt="Bong bóng ngang lúc chạy quá tốc độ: khối tốc độ nền đỏ, 72 km/h trong khi giới hạn 60.">
+        <ul class="alerts4">
+          <li><b>↱ Lối rẽ sắp tới</b>Mũi tên, khoảng cách và tên đường sẽ rẽ vào.</li>
+          <li><b>⇈ Làn đường</b>Các làn ở nút giao, làn nên đi được tô sáng.</li>
+          <li><b>🚦 Đèn giao thông</b>Còn dưới 500 m thì có thanh đếm lùi màu đỏ.</li>
+          <li><b>80 Đổi tốc độ phía trước</b>Biển giới hạn mới và còn bao xa tới đó.</li>
+        </ul>
+        <p class="note">Trên là bong bóng dọc lúc sắp tới ngã rẽ. Giữa là bong bóng ngang cùng tình huống. Dưới là bong bóng ngang lúc lỡ chạy quá tốc độ, phần tốc độ chuyển sang đỏ.</p>
       </div>
     </div>
   </section>
 
   <section class="block gutter">
     <div class="wrap">
-      <div class="head"><h2>Đang chỉ đường bằng Google Maps hay Waze vẫn thấy tốc độ</h2><p>Lúc không xem video, bạn cứ để bản đồ chiếm màn hình. Thẻ DriveTV bên cạnh vẫn hiện biển giới hạn và tốc độ xe. Dòng trên cho biết còn bao xa tới chỗ rẽ và rẽ vào đường nào. Dòng dưới chỉ nhắc những gì đáng để ý như camera, đổi tốc độ, trạm thu phí. Video vẫn phát tiếng, bạn quay lại là thấy hình ngay.</p></div>
-      <div class="visual box solo wide"><div class="dark"><img src="img/mh-1280x720-ban-do.jpg" width="1280" height="720" loading="lazy" alt="Google Maps bên trái; thẻ DriveTV bên phải có biển 60 to, tốc độ 52 trong vòng tròn nhỏ, viên camera 400 m, dòng rẽ phải 250 m vào Nguyễn Văn Linh và dòng Camera 400 m."></div></div>
+      <div class="head"><h2>Đang chỉ đường bằng Google Maps hay Waze vẫn thấy tốc độ</h2><p>Lúc không xem video, bạn cứ để bản đồ chiếm màn hình. Thẻ DriveTV bên cạnh vẫn hiện biển giới hạn và tốc độ xe. Dòng trên cho biết còn bao xa tới chỗ rẽ và rẽ vào đường nào. Dòng dưới chỉ nhắc những gì đáng để ý như đèn giao thông, camera, đổi tốc độ, trạm thu phí. Video vẫn phát tiếng, bạn quay lại là thấy hình ngay.</p></div>
+      <div class="visual box solo wide"><div class="dark"><img src="img/mh-1280x720-ban-do.jpg" width="1280" height="720" loading="lazy" alt="Google Maps bên trái; thẻ DriveTV bên phải có biển 60 to, tốc độ 52 trong vòng tròn nhỏ, viên Đèn đỏ 180 m, dòng rẽ phải 250 m vào Nguyễn Văn Linh và dòng Đèn đỏ 180 m."></div></div>
     </div>
   </section>
 
@@ -512,41 +531,68 @@
     <div class="wrap">
       <div class="head-row">
         <h2>Xem trước trên màn hình giống xe bạn</h2>
-        <p>Bạn chọn cỡ màn hình gần giống xe mình để xem trước nhé. Mỗi cỡ có hai ảnh: lúc xem video toàn màn hình và lúc đang chỉ đường.</p>
+        <p>Bạn chọn cỡ màn hình gần giống xe mình để xem trước nhé. Mỗi cỡ có ba ảnh: xem video với bong bóng ngang, với bong bóng dọc, và lúc đang chỉ đường.</p>
       </div>
       <div class="tabs" role="tablist" aria-label="Loại màn hình">
         <button type="button" role="tab" aria-selected="true" data-tab="800x480">Màn nhỏ 7 inch<small>800 × 480</small></button>
         <button type="button" role="tab" aria-selected="false" data-tab="1280x720">Màn 8 – 9 inch<small>1280 × 720</small></button>
         <button type="button" role="tab" aria-selected="false" data-tab="1920x1080">Màn 10 inch trở lên<small>1920 × 1080</small></button>
+        <button type="button" role="tab" aria-selected="false" data-tab="man-vuong">Màn vuông<small>1440 × 1080</small></button>
         <button type="button" role="tab" aria-selected="false" data-tab="man-dai">Màn dài<small>1920 × 720</small></button>
         <button type="button" role="tab" aria-selected="false" data-tab="man-doc">Màn dọc<small>1080 × 1920</small></button>
       </div>
-      <div class="panel box" data-panel="800x480">
-        <figure><figcaption>Xem video</figcaption><img src="img/mh-800x480-video.jpg" width="800" height="480" loading="lazy" alt="Màn 800×480: video toàn màn hình, bong bóng ngang phía trên."></figure>
-        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-800x480-ban-do.jpg" width="800" height="480" loading="lazy" alt="Màn 800×480: Google Maps và thẻ DriveTV."></figure>
-        <p class="note">Màn nhỏ thì bong bóng thu gọn thành một dải mỏng ở trên, video vẫn chiếm gần trọn màn hình.</p>
+      <div class="panel box three" data-panel="800x480">
+        <figure><figcaption>Video · bong bóng ngang</figcaption><img src="img/mh-800x480-video-ngang.jpg" width="800" height="480" loading="lazy" alt="Màn nhỏ 7 inch 800 × 480: video toàn màn hình, bong bóng ngang ở giữa mép trên."></figure>
+        <figure><figcaption>Video · bong bóng dọc</figcaption><img src="img/mh-800x480-video-doc.jpg" width="800" height="480" loading="lazy" alt="Màn nhỏ 7 inch 800 × 480: video toàn màn hình, bong bóng dọc ở góc phải trên có lối rẽ, làn, đèn giao thông, đổi tốc độ."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-800x480-ban-do.jpg" width="800" height="480" loading="lazy" alt="Màn nhỏ 7 inch 800 × 480: Google Maps và thẻ DriveTV."></figure>
+        <p class="note">Màn nhỏ thì cả hai kiểu bong bóng vẫn hiện đủ lối rẽ, làn, đèn giao thông và đổi tốc độ, video vẫn chiếm gần trọn màn hình.</p>
       </div>
-      <div class="panel box" data-panel="1280x720" hidden>
-        <figure><figcaption>Xem video</figcaption><img src="img/mh-1280x720-video.jpg" width="1280" height="720" loading="lazy" alt="Màn 1280×720: video bên trái có bong bóng ngang, Google Maps bên phải."></figure>
-        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-1280x720-ban-do.jpg" width="1280" height="720" loading="lazy" alt="Màn 1280×720: Google Maps và thẻ DriveTV."></figure>
-        <p class="note">Đây là cỡ màn hình phổ biến nhất. Video và bản đồ nằm cạnh nhau, bạn không phải chuyển qua lại.</p>
+      <div class="panel box three" data-panel="1280x720" hidden>
+        <figure><figcaption>Video · bong bóng ngang</figcaption><img src="img/mh-1280x720-video-ngang.jpg" width="1280" height="720" loading="lazy" alt="Màn 8 – 9 inch 1280 × 720: video toàn màn hình, bong bóng ngang ở giữa mép trên."></figure>
+        <figure><figcaption>Video · bong bóng dọc</figcaption><img src="img/mh-1280x720-video-doc.jpg" width="1280" height="720" loading="lazy" alt="Màn 8 – 9 inch 1280 × 720: video toàn màn hình, bong bóng dọc ở góc phải trên có lối rẽ, làn, đèn giao thông, đổi tốc độ."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-1280x720-ban-do.jpg" width="1280" height="720" loading="lazy" alt="Màn 8 – 9 inch 1280 × 720: Google Maps và thẻ DriveTV."></figure>
+        <p class="note">Cỡ phổ biến nhất, video và bản đồ nằm cạnh nhau. Bong bóng dọc hiện đủ mọi cảnh báo. Bong bóng ngang cỡ vừa ưu tiên lối rẽ, làn và đèn giao thông, chỗ đổi tốc độ hiện khi tới gần hơn (hoặc chọn cỡ nhỏ để thấy cả).</p>
       </div>
-      <div class="panel box" data-panel="1920x1080" hidden>
-        <figure><figcaption>Xem video</figcaption><img src="img/mh-1920x1080-video.jpg" width="1280" height="707" loading="lazy" alt="Màn 1920×1080: video và bong bóng ngang, Google Maps bên phải."></figure>
-        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-1920x1080-ban-do.jpg" width="1280" height="707" loading="lazy" alt="Màn 1920×1080: Google Maps và thẻ DriveTV."></figure>
+      <div class="panel box three" data-panel="1920x1080" hidden>
+        <figure><figcaption>Video · bong bóng ngang</figcaption><img src="img/mh-1920x1080-video-ngang.jpg" width="1280" height="707" loading="lazy" alt="Màn 10 inch trở lên 1920 × 1080: video toàn màn hình, bong bóng ngang ở giữa mép trên."></figure>
+        <figure><figcaption>Video · bong bóng dọc</figcaption><img src="img/mh-1920x1080-video-doc.jpg" width="1280" height="707" loading="lazy" alt="Màn 10 inch trở lên 1920 × 1080: video toàn màn hình, bong bóng dọc ở góc phải trên có lối rẽ, làn, đèn giao thông, đổi tốc độ."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-1920x1080-ban-do.jpg" width="1280" height="707" loading="lazy" alt="Màn 10 inch trở lên 1920 × 1080: Google Maps và thẻ DriveTV."></figure>
         <p class="note">Màn hình độ nét cao thì chữ và số trong bong bóng tự lớn theo, ngồi ghế lái nhìn vẫn rõ.</p>
       </div>
-      <div class="panel box wide" data-panel="man-dai" hidden>
-        <figure><figcaption>Xem video</figcaption><img src="img/mh-man-dai-video.jpg" width="1600" height="600" loading="lazy" alt="Màn dài 1920×720: video lớn với bong bóng ngang, Google Maps bên phải."></figure>
-        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-man-dai-ban-do.jpg" width="1600" height="600" loading="lazy" alt="Màn dài 1920×720: Google Maps và thẻ DriveTV có thêm nút Đánh dấu."></figure>
-        <p class="note">Màn hình dài thì video rộng rãi hơn, bong bóng ngang đủ chỗ hiện cả camera lẫn chỗ đổi tốc độ.</p>
+      <div class="panel box three" data-panel="man-vuong" hidden>
+        <figure><figcaption>Video · bong bóng ngang</figcaption><img src="img/mh-man-vuong-video-ngang.jpg" width="1080" height="796" loading="lazy" alt="Màn vuông 1440 × 1080: video toàn màn hình, bong bóng ngang ở giữa mép trên."></figure>
+        <figure><figcaption>Video · bong bóng dọc</figcaption><img src="img/mh-man-vuong-video-doc.jpg" width="1080" height="796" loading="lazy" alt="Màn vuông 1440 × 1080: video toàn màn hình, bong bóng dọc ở góc phải trên có lối rẽ, làn, đèn giao thông, đổi tốc độ."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-man-vuong-ban-do.jpg" width="1080" height="796" loading="lazy" alt="Màn vuông 1440 × 1080: Google Maps và thẻ DriveTV."></figure>
+        <p class="note">Màn gần vuông thì video chiếm trọn chiều ngang, bong bóng ngang đủ chỗ hiện cả bốn loại cảnh báo.</p>
       </div>
-      <div class="panel box tall" data-panel="man-doc" hidden>
-        <figure><figcaption>Xem video</figcaption><img src="img/mh-man-doc-video.jpg" width="607" height="1061" loading="lazy" alt="Màn dọc: bản đồ phía trên, video với bong bóng ngang phía dưới."></figure>
-        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-man-doc-ban-do.jpg" width="607" height="1061" loading="lazy" alt="Màn dọc: Google Maps phía trên, thẻ DriveTV nhỏ phía dưới."></figure>
+      <div class="panel box three wide" data-panel="man-dai" hidden>
+        <figure><figcaption>Video · bong bóng ngang</figcaption><img src="img/mh-man-dai-video-ngang.jpg" width="1600" height="600" loading="lazy" alt="Màn dài 1920 × 720: video toàn màn hình, bong bóng ngang ở giữa mép trên."></figure>
+        <figure><figcaption>Video · bong bóng dọc</figcaption><img src="img/mh-man-dai-video-doc.jpg" width="1600" height="600" loading="lazy" alt="Màn dài 1920 × 720: video toàn màn hình, bong bóng dọc ở góc phải trên có lối rẽ, làn, đèn giao thông, đổi tốc độ."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-man-dai-ban-do.jpg" width="1600" height="600" loading="lazy" alt="Màn dài 1920 × 720: Google Maps và thẻ DriveTV."></figure>
+        <p class="note">Màn hình dài thì video rộng rãi, bong bóng ngang đủ chỗ hiện lối rẽ, làn, đèn giao thông lẫn chỗ đổi tốc độ.</p>
+      </div>
+      <div class="panel box three tall" data-panel="man-doc" hidden>
+        <figure><figcaption>Video · bong bóng ngang</figcaption><img src="img/mh-man-doc-video-ngang.jpg" width="607" height="1061" loading="lazy" alt="Màn dọc 1080 × 1920: video toàn màn hình, bong bóng ngang ở giữa mép trên."></figure>
+        <figure><figcaption>Video · bong bóng dọc</figcaption><img src="img/mh-man-doc-video-doc.jpg" width="607" height="1061" loading="lazy" alt="Màn dọc 1080 × 1920: video toàn màn hình, bong bóng dọc ở góc phải trên có lối rẽ, làn, đèn giao thông, đổi tốc độ."></figure>
+        <figure><figcaption>Đang chỉ đường</figcaption><img src="img/mh-man-doc-ban-do.jpg" width="607" height="1061" loading="lazy" alt="Màn dọc 1080 × 1920: Google Maps và thẻ DriveTV."></figure>
         <p class="note">Màn hình dọc thì bản đồ ở trên, video ở dưới. Thẻ DriveTV nhỏ hơn nên bạn xem chủ yếu qua hai dòng chữ.</p>
       </div>
       <p class="fineprint">Ảnh chụp trên bộ giả lập màn hình xe của Google, số liệu tốc độ là cảnh mẫu. Trên xe thật, cách Android Auto chia màn hình có thể khác một chút tuỳ hãng xe.</p>
+    </div>
+  </section>
+
+  <section class="block gutter" id="anh-gioi-thieu">
+    <div class="wrap">
+      <div class="head-row">
+        <h2>Ảnh giới thiệu để chia sẻ</h2>
+        <p>Muốn giới thiệu app cho bạn bè hay nhóm xe? Bấm vào ảnh để tải về, đăng Facebook, Zalo đều vừa khổ.</p>
+      </div>
+      <div class="promo">
+        <a class="box" href="img/qc-canh-bao.jpg" download><img src="img/qc-canh-bao.jpg" width="1200" height="630" loading="lazy" alt="Ảnh giới thiệu: Biết trước mọi thứ phía trước. Lối rẽ sắp tới, làn đường, đèn giao thông, đổi tốc độ, cạnh bong bóng dọc của app."><span>Bốn cảnh báo · 1200 × 630</span></a>
+        <a class="box" href="img/qc-ngang-doc.jpg" download><img src="img/qc-ngang-doc.jpg" width="1600" height="900" loading="lazy" alt="Ảnh giới thiệu: Bong bóng dọc hay ngang, tuỳ bạn. Hai ảnh chụp màn hình xe."><span>Dọc hay ngang · 1600 × 900</span></a>
+        <a class="box" href="img/qc-vuong.jpg" download><img src="img/qc-vuong.jpg" width="1080" height="1080" loading="lazy" alt="Ảnh giới thiệu vuông: Xem YouTube, vẫn thấy tốc độ."><span>Ảnh vuông · 1080 × 1080</span></a>
+        <a class="box" href="img/qc-moi-man-hinh.jpg" download><img src="img/qc-moi-man-hinh.jpg" width="1080" height="1350" loading="lazy" alt="Ảnh giới thiệu dọc: Vừa mọi màn hình xe, năm cỡ màn hình."><span>Mọi màn hình · 1080 × 1350</span></a>
+      </div>
     </div>
   </section>
 
